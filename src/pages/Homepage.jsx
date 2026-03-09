@@ -9,10 +9,10 @@ import React from "react";
             FASTER THAN ORDERING CHAI ☕
           </div>
           <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
-            Need a Poster for <br/><span className="text-orange-600 font-extrabold italic">Your Shop?</span>
+            Need a Poster for <br/><span className="text-orange-600 font-extrabold italic">Your Business?</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
-            Send Details on WhatsApp. Get Design in <span className="text-slate-900 font-bold underline decoration-orange-400 decoration-2">15 Minutes</span>. Starting at just <span className="font-black text-slate-900">₹49</span>.
+            Send Details on WhatsApp. Get Design in <span className="text-slate-900 font-bold underline decoration-orange-400 decoration-2">15 Minutes</span>. Starting at just <span className="font-black text-slate-900">₹49 - Launch Offer 🔥</span>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <button 
@@ -32,11 +32,11 @@ import React from "react";
           {/* Trust Stats */}
           <div className="grid grid-cols-3 text-center md:text-left mt-16 border-t pt-10">
             <div>
-              <p className="text-3xl font-black text-slate-900 flex items-center justify-center md:justify-start gap-1">500+</p>
+              <p className="text-3xl font-black text-slate-900 flex items-center justify-center md:justify-start gap-1">100+</p>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Posters Delivered</p>
             </div>
             <div className="border-x">
-              <p className="text-3xl font-black text-slate-900 flex items-center justify-center md:justify-start gap-1">120+</p>
+              <p className="text-3xl font-black text-slate-900 flex items-center justify-center md:justify-start gap-1">20+</p>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Local Businesses</p>
             </div>
             <div>
