@@ -11,7 +11,7 @@ const PORTFOLIO_ITEMS = [
 { id:8, cat:"Retail", title:"Electronics Dhamaka", img:"/templates/retail-sale.png"},
 { id:9, cat:"Coaching", title:"Maths Admission Open", img:"/templates/coaching-admission.png"},
 { id:10, cat:"Coaching", title:"English Speaking Classes", img:"/templates/coaching-crashcourse.png"},
-{ id:11, cat:"Festival", title:"Hole Wishes", img:"/templates/holi-wish.png"},
+{ id:11, cat:"Festival", title:"Holi Wishes", img:"/templates/holi-wish.png"},
 { id:12, cat:"Festival", title:"Diwali Sale Poster", img:"/templates/diwali-sale.png"}
 ];
 
@@ -55,6 +55,7 @@ Real posters delivered to local businesses across India.
 <div className="flex flex-wrap justify-center gap-2 mb-12">
 
 {categories.map(c=>(
+
 <button
 key={c}
 onClick={()=>setFilter(c)}
@@ -63,9 +64,13 @@ ${filter===c
 ? "bg-orange-600 text-white shadow-lg"
 :"bg-slate-100 text-slate-600 hover:bg-slate-200"}
 `}
+
 >
+
 {c}
+
 </button>
+
 ))}
 
 </div>
@@ -79,7 +84,7 @@ ${filter===c
 <div
 key={item.id}
 onClick={()=>setPreview(item)}
-className="relative cursor-pointer bg-white p-3 rounded-3xl border shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+className="group relative cursor-pointer bg-white p-3 rounded-3xl border shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
 >
 
 {/* price badge */}
@@ -147,6 +152,7 @@ window.open(
 )
 }
 className="bg-green-500 text-white px-6 py-3 rounded-xl font-bold"
+
 >
 
 Order This Poster
@@ -156,6 +162,7 @@ Order This Poster
 <button
 onClick={()=>setPreview(null)}
 className="block mt-4 text-sm text-slate-500"
+
 >
 
 Close
