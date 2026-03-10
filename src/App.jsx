@@ -112,18 +112,18 @@ const PRICING_PLANS = [
 ];
 
 const PORTFOLIO_ITEMS = [
-  { id: 1, cat: "Salon", title: "Glow Salon Opening", img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" },
-  { id: 2, cat: "Gym", title: "Iron Fitness 50% Off", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" },
-  { id: 3, cat: "Cafe", title: "Chai Chaska Menu", img: "https://images.unsplash.com/photo-1501339817302-ee4f89db0fe0?auto=format&fit=crop&w=600&q=80" },
-  { id: 4, cat: "Retail", title: "Kirana Big Sale", img: "https://images.unsplash.com/photo-1604719312563-8912e9223c6a?auto=format&fit=crop&w=600&q=80" },
-  { id: 5, cat: "Coaching", title: "Maths Admission Open", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" },
-  { id: 6, cat: "Festival", title: "Diwali Special Offer", img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" },
-  { id: 7, cat: "Salon", title: "Bridal Makeup Pack", img: "https://images.unsplash.com/photo-1522337363553-5605d99345bc?auto=format&fit=crop&w=600&q=80" },
-  { id: 8, cat: "Gym", title: "New Year Membership", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80" },
-  { id: 9, cat: "Cafe", title: "Fresh Burger Combo", img: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80" },
-  { id: 10, cat: "Retail", title: "Electronics Dhamaka", img: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=600&q=80" },
-  { id: 11, cat: "Coaching", title: "English Speaking Class", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" },
-  { id: 12, cat: "Festival", title: "Happy Holi Wishes", img: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?auto=format&fit=crop&w=600&q=80" },
+  { id:1, cat:"Salon", title:"Glow Salon Opening", img:"/templates/salon-opening.png"},
+{ id:2, cat:"Salon", title:"Bridal Makeup Pack", img:"/templates/salon-makeup.png"},
+{ id:3, cat:"Gym", title:"Iron Fitness 50% Off", img:"/templates/gym-offer.png"},
+{ id:4, cat:"Gym", title:"New Year Membership Offer", img:"/templates/gym-membership.png"},
+{ id:5, cat:"Cafe", title:"Catering Service", img:"/templates/catering-service.png"},
+{ id:6, cat:"Cafe", title:"Sweets Menu", img:"/templates/sweets-menu.png"},
+{ id:7, cat:"Retail", title:"Kirana Big Sale", img:"/templates/kirana-sale.png"},
+{ id:8, cat:"Retail", title:"Electronics Dhamaka", img:"/templates/retail-sale.png"},
+{ id:9, cat:"Coaching", title:"Maths Admission Open", img:"/templates/coaching-admission.png"},
+{ id:10, cat:"Coaching", title:"English Speaking Classes", img:"/templates/coaching-crashcourse.png"},
+{ id:11, cat:"Festival", title:"Hole Wishes", img:"/templates/holi-wish.png"},
+{ id:12, cat:"Festival", title:"Diwali Sale Poster", img:"/templates/diwali-sale.png"}
 ];
 
 const TESTIMONIALS = [
@@ -144,10 +144,10 @@ const HomePage = ({ navigate }) => (
             FASTER THAN ORDERING CHAI ☕
           </div>
           <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
-            Need a Poster for <br/><span className="text-orange-600 font-extrabold italic">Your Shop?</span>
+            Need a Poster for <br/><span className="text-orange-600 font-extrabold italic">Your Business?</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
-            Send Details on WhatsApp. Get Design in <span className="text-slate-900 font-bold underline decoration-orange-400 decoration-2">15 Minutes</span>. Starting at just <span className="font-black text-slate-900">₹49</span>.
+            Send Details on WhatsApp. Get Design in <span className="text-slate-900 font-bold underline decoration-orange-400 decoration-2">15 Minutes</span>. Starting at just <span className="font-black text-slate-900">₹49 - Launch Offer 🔥</span>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <button 
