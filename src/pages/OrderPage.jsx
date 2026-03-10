@@ -129,5 +129,4 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
 </section>
 );
 };
-
 export default OrderPage;
