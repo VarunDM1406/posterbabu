@@ -186,7 +186,7 @@ const HomePage = ({ navigate }) => (
           <div className="absolute -inset-4 bg-orange-100 rounded-[3rem] -rotate-3 transition-transform group-hover:rotate-0"></div>
           <div className="relative bg-white p-4 rounded-[2.5rem] shadow-2xl border border-slate-100 max-w-xs sm:max-w-sm overflow-hidden rotate-2 group-hover:rotate-0 transition-transform">
             <img 
-              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" 
+              src="/templates/salon-opening.png" 
               alt="Sample Salon Poster"
               className="rounded-[2rem] object-cover w-full h-[400px]"
             />
