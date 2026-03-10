@@ -11,7 +11,7 @@ details: ""
 
 const handleSubmit = (e) => {
 e.preventDefault();
-const message = `Hello PosterBabu 👋
+const message = `Hello PosterBabu!
 Name: ${formData.name}
 Business: ${formData.business}
 Poster Type: ${formData.type}
