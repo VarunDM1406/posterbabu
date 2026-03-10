@@ -151,7 +151,7 @@ return ( <section className="py-16 px-4 animate-in fade-in slide-in-from-bottom-
       </div>
 
       <div className="text-center relative z-10">
-        <div className="text-5xl font-black mb-1">₹899</div>
+        <div className="text-5xl font-black mb-1">₹999</div>
 
         <div className="text-indigo-300 line-through mb-1">
           ₹1999
