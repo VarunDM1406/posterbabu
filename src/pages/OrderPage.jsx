@@ -92,12 +92,13 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
             <option>Custom Design (₹99)</option>
             <option>Monthly Plan (₹399)</option>
             <option>3 Month Growth Plan (₹899)</option>
+            <option>Other - Please Specify Below</option>
           </select>
         </div>
 
         <div className="space-y-2">
           <label className="text-xs font-black uppercase text-slate-400 ml-1">
-            Poster Details
+            Poster Details - Make sure you give your best 😎
           </label>
 
           <textarea
