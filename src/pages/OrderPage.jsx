@@ -78,7 +78,7 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
 
         <div className="space-y-2">
           <label className="text-xs font-black uppercase text-slate-400 ml-1">
-            Service Type — Note: Choose a design from the Portfolio section. We will edit it with your details and deliver the final design for ₹49.
+            Service Type — Note: for the ₹49 draft Choose a design from the Portfolio section. We will edit it with your details and deliver the final design.
           </label>
 
           <select
