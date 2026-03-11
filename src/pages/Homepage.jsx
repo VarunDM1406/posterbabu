@@ -73,7 +73,7 @@ See Our Designs </button>
 
 <div>
 <p className="text-3xl font-black text-slate-900 flex items-center justify-center md:justify-start gap-1">
-500+
+100+
 </p>
 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
 Posters Delivered

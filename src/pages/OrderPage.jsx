@@ -34,7 +34,7 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
 
         <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-1.5 rounded-full text-xs font-black mb-6">
           <Zap size={14} fill="currentColor" />
-          MOST ORDERS DELIVERED IN UNDER 20 MINS
+          MOST FAST DRAFT ORDERS DELIVERED IN UNDER 20 MINS
         </div>
 
         <p className="text-slate-500">
@@ -78,7 +78,7 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
 
         <div className="space-y-2">
           <label className="text-xs font-black uppercase text-slate-400 ml-1">
-            Service Type
+            Service Type — Note: Choose a design from the Portfolio section. We will edit it with your details and deliver the final design for ₹49.
           </label>
 
           <select
@@ -90,7 +90,7 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
           >
             <option>Fast Draft 🔥 - Under 15 mins (₹49)</option>
             <option>Custom Design (₹99)</option>
-            <option>Monthly Plan (₹399)</option>
+            <option>Monthly Plan (₹449)</option>
             <option>3 Month Growth Plan (₹899)</option>
             <option>Other - Please Specify Below</option>
           </select>

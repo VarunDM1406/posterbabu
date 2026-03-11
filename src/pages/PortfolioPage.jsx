@@ -89,7 +89,7 @@ className="group relative cursor-pointer bg-white p-3 rounded-3xl border shadow-
 
 {/* price badge */}
 
-<div className="absolute top-3 right-3 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
+<div className="absolute top-3 right-3 bg-black-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
 🔥 ₹49
 </div>
 
@@ -161,7 +161,7 @@ Order This Poster
 
 <button
 onClick={()=>setPreview(null)}
-className="block mt-4 text-sm text-slate-500"
+className="bg-black-200 text-white px-6 py-3 rounded-xl font-bold"
 
 >
 
