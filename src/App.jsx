@@ -188,10 +188,30 @@ PosterBabu Design Studio
 </p>
 
 <div className="flex justify-center gap-4 mb-4">
-<Instagram/>
-<Facebook/>
-<MessageCircle/>
+
+<a
+href="https://www.instagram.com/posterbabu_official/"
+target="_blank"
+rel="noopener noreferrer"
+className="hover:text-orange-500 transition-colors"
+>
+<Instagram size={22}/>
+</a>
+
+{/* Facebook disabled until account is created */}
+
+<a
+href="https://wa.me/917428091729"
+target="_blank"
+rel="noopener noreferrer"
+className="hover:text-orange-500 transition-colors"
+>
+<MessageCircle size={22}/>
+</a>
+
 </div>
+
+
 
 <p className="text-sm text-slate-400">
 © {new Date().getFullYear()} PosterBabu
