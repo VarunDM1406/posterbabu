@@ -138,7 +138,7 @@ Posters Delivered
 </div>
 
 <div className="border-x">
-<p className="text-3xl font-black text-slate-900">50+</p>
+<p className="text-3xl font-black text-slate-900">20+</p>
 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
 Businesses Served
 </p>
