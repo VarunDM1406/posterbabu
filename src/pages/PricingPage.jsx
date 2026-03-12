@@ -42,8 +42,8 @@ const PRICING_PLANS = [
   {
     name: "Growth",
     desc: "For businesses that post regularly",
-    oldPrice:1499,
-    newPice: 999,
+    oldPrice: 1499,
+    newPrice: 999,
     features: [
       "20 Social Media Posters",
       "Festival Creatives",
@@ -57,7 +57,7 @@ const PRICING_PLANS = [
     name: "Pro",
     desc: "For brands that want consistent content",
     oldPrice: 2999,
-    price: 1999,
+    newPrice: 1999,
     features: [
       "40 Social Media Posters",
       "Festival Creatives",
@@ -91,7 +91,7 @@ const FAQS = [
 
 /* WhatsApp redirect */
 const openWhatsApp = (plan) => {
-  const phone = "917428091729"; // replace with your number
+  const phone = "917428091729";
   const message = `Hi PosterBabu, I want to order the ${plan} plan.`;
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
@@ -135,9 +135,14 @@ const PricingPage = () => {
                     {offer.tagline}
                   </span>
                   <h3 className="text-2xl font-black mt-1 mb-2">{offer.name}</h3>
+
                   <div className="text-4xl font-black text-slate-900">
-                    ₹{offer.price}
+                    ₹{offer.newPrice}
+                    <span className="text-lg text-slate-400 line-through ml-2">
+                      ₹{offer.oldPrice}
+                    </span>
                   </div>
+
                 </div>
 
                 <ul className="space-y-3 mb-8 flex-grow">
@@ -146,7 +151,7 @@ const PricingPage = () => {
                       key={j}
                       className="flex items-center gap-3 font-bold text-slate-600 text-sm"
                     >
-                      <CheckCircle size={16} className="text-green-500 shrink-0" />{" "}
+                      <CheckCircle size={16} className="text-green-500 shrink-0" />
                       {f}
                     </li>
                   ))}
@@ -201,10 +206,14 @@ const PricingPage = () => {
 
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-5xl font-black text-slate-900">
-                    ₹{plan.price}
+                    ₹{plan.newPrice}
+                  </span>
+                  <span className="text-lg text-slate-400 line-through font-bold">
+                    ₹{plan.oldPrice}
                   </span>
                   <span className="text-slate-400 font-bold">/ mo</span>
                 </div>
+
               </div>
 
               <ul className="space-y-4 mb-10 flex-grow border-t pt-8 border-slate-50">
@@ -213,7 +222,7 @@ const PricingPage = () => {
                     key={j}
                     className="flex items-center gap-3 text-sm font-bold text-slate-700"
                   >
-                    <CheckCircle size={18} className="text-green-500 shrink-0" />{" "}
+                    <CheckCircle size={18} className="text-green-500 shrink-0" />
                     {f}
                   </li>
                 ))}
