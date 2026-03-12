@@ -78,7 +78,7 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
 
         <div className="space-y-2">
           <label className="text-xs font-black uppercase text-slate-400 ml-1">
-            Service Type — Note: for the ₹49 draft Choose a design from the Portfolio section. We will edit it with your details and deliver the final design.
+            Service Type — Note: for the ₹49 draft Choose a design from the Portfolio section. We will edit it with your details and deliver the final design for ₹49.
           </label>
 
           <select
@@ -88,11 +88,11 @@ return ( <section className="py-16 px-4 animate-in fade-in duration-500"> <div c
               setFormData({ ...formData, type: e.target.value })
             }
           >
-            <option>Fast Draft 🔥 - Under 15 mins (₹49)</option>
-            <option>Custom Design (₹99)</option>
-            <option>Monthly Plan (₹449)</option>
-            <option>3 Month Growth Plan (₹899)</option>
-            <option>Other - Please Specify Below</option>
+            <option>Fast Edit (₹49)</option>
+                  <option>Custom Design (₹149)</option>
+                  <option>Starter Plan (₹499)</option>
+                  <option>Growth Plan (₹999)</option>
+                  <option>Business Plan (₹1799)</option>
           </select>
         </div>
 
