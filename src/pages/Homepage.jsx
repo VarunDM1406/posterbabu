@@ -6,7 +6,7 @@ import { MessageCircle, Zap, CheckCircle, Star } from "lucide-react";
 const ENTRY_OFFERS = [
 {
 name: "Fast Edit",
-Price:49,
+price: 49,
 tagline: "Perfect for quick need",
 features: [
 "Edit existing poster",
@@ -17,7 +17,7 @@ button: "Edit My Poster"
 },
 {
 name: "Custom Poster",
-Price:149,
+price: 149,
 tagline: "Designed for your business",
 features: [
 "Custom poster design",
