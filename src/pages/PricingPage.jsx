@@ -17,7 +17,7 @@ const ENTRY_OFFERS = [
     name: "Poster Edit",
     oldPrice: 299,
     newPrice: 149,
-    features: ["Edit Existing Design", "Text/Image Changes", "Fast Delivery"],
+    features: ["Custom Design", "Text/Image Changes", "Fast Delivery"],
     button: "Get Edit",
     highlight: true,
   },

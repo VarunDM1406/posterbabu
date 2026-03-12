@@ -18,7 +18,8 @@ button: "Edit My Poster"
 },
 {
 name: "Custom Poster",
-price: 149,
+oldPrice: 299,
+newPrice: 149,
 tagline: "Designed for your business",
 features: [
 "Custom poster design",
@@ -228,7 +229,10 @@ offer.highlight
 </h3>
 
 <div className="text-5xl font-black mb-6">
-₹{offer.price}
+₹{offer.newPrice}
+<span className="text-xl text-slate-400 line-through ml-2">
+₹{offer.oldPrice}
+</span>
 </div>
 
 <ul className="space-y-3 mb-8">
