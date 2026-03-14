@@ -83,12 +83,17 @@ Get professional posters designed for your business in minutes.
 <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
 <button
-onClick={() => navigate("pricing")}
+onClick={() => navigate("services")}
 className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition"
 >
 View Our Services
 </button>
-
+<button
+onClick={() => navigate("pricing")}
+className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition"
+>
+View Our Pricing
+</button>
 <button
 onClick={() => navigate("order")}
 className="bg-black text-white px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition"
