@@ -13,6 +13,7 @@ const PORTFOLIO_ITEMS = [
 { id:10, cat:"Coaching", title:"English Speaking Classes", img:"/templates/coaching-crashcourse.png"},
 { id:11, cat:"Festival", title:"Holi Wishes", img:"/templates/holi-wish.png"},
 { id:12, cat:"Festival", title:"Diwali Sale Poster", img:"/templates/diwali-sale.png"}
+
 ];
 
 const PortfolioPage = () => {
@@ -89,7 +90,7 @@ className="group relative cursor-pointer bg-white p-3 rounded-3xl border shadow-
 
 {/* price badge */}
 
-<div className="absolute top-3 right-3 bg-black-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
+<div className="absolute top-3 right-3 bg-black text-white text-xs font-bold px-2 py-1 rounded-full shadow">
 🔥 ₹49
 </div>
 
@@ -131,9 +132,15 @@ className="w-full h-full object-cover transition-transform group-hover:scale-105
 
 {preview && (
 
-<div className="fixed inset-0 bg-black/70 flex items-center justify-center p-6 z-50">
+<div
+  className="fixed inset-0 bg-black/70 flex items-center justify-center p-6 z-50"
+  onClick={() => setPreview(null)}
+>
 
-<div className="bg-white rounded-2xl p-6 max-w-md w-full text-center">
+<div
+  className="bg-white rounded-2xl p-6 max-w-md w-full text-center"
+  onClick={(e) => e.stopPropagation()}
+>
 
 <img
 src={preview.img}
@@ -145,29 +152,27 @@ className="rounded-xl mb-4"
 {preview.title}
 </h3>
 
+<div className="flex gap-3 justify-center">
+
 <button
 onClick={() =>
-window.open(
-`https://wa.me/917428091729?text=Hello PosterBabu I want a poster like "${preview.title}"`
-)
+  window.open(
+    `https://wa.me/917428091729?text=Hello PosterBabu I want a poster like "${preview.title}"`
+  )
 }
 className="bg-green-500 text-white px-6 py-3 rounded-xl font-bold"
-
 >
-
 Order This Poster
-
 </button>
 
 <button
 onClick={()=>setPreview(null)}
-className="bg-black-200 text-white px-6 py-3 rounded-xl font-bold"
-
+className="bg-gray-800 text-white px-6 py-3 rounded-xl font-bold"
 >
-
 Close
-
 </button>
+
+</div>
 
 </div>
 
