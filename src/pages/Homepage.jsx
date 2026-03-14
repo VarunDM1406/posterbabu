@@ -116,11 +116,11 @@ Order a Poster
 </button>
 
 <button
-onClick={() => navigate("pricing")}
+onClick={() => navigate("portfolio")}
 className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-10 py-5 rounded-2xl font-bold text-xl"
 >
 
-View Pricing
+View Portfolio
 
 </button>
 
