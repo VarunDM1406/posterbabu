@@ -12,8 +12,8 @@ const PORTFOLIO_ITEMS = [
 { id:9, cat:"Coaching", title:"Maths Admission Open", img:"/templates/coaching-admission.png"},
 { id:10, cat:"Coaching", title:"English Speaking Classes", img:"/templates/coaching-crashcourse.png"},
 { id:11, cat:"Festival", title:"Holi Wishes", img:"/templates/holi-wish.png"},
-{ id:12, cat:"Festival", title:"Diwali Sale Poster", img:"/templates/diwali-sale.png"}
-
+{ id:12, cat:"Festival", title:"Diwali Sale Poster", img:"/templates/diwali-sale.png"},
+{ id:13, cat:"Retail", title:"Shyam Manufacturers Poster", img:"/templates/shyam_manufacturers.jpg"}
 ];
 
 const PortfolioPage = () => {
