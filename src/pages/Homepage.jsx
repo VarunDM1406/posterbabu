@@ -438,15 +438,15 @@ What Our Clients Say
 </div>
 {/* FINAL CTA */}
 
-<section className="py-20 px-4 bg-orange-600 text-white text-center">
+<section className="py-24 px-6">
 
-<div className="max-w-4xl mx-auto">
+<div className="max-w-5xl mx-auto bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-3xl shadow-2xl p-14 text-center">
 
-<h2 className="text-4xl font-black mb-6">
+<h2 className="text-4xl md:text-5xl font-black mb-6">
 Ready to Promote Your Business?
 </h2>
 
-<p className="text-orange-100 mb-10 text-lg">
+<p className="text-orange-100 text-lg mb-10 max-w-xl mx-auto">
 Get professional posters designed for your business in minutes.
 </p>
 
@@ -454,19 +454,21 @@ Get professional posters designed for your business in minutes.
 
 <button
 onClick={() => navigate("services")}
-className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition"
+className="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold hover:scale-105 transition shadow-md"
 >
-View Our Services
+View Services
 </button>
+
 <button
 onClick={() => navigate("pricing")}
-className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition"
+className="bg-white/20 backdrop-blur border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/30 transition"
 >
-View Our Pricing
+View Pricing
 </button>
+
 <button
 onClick={() => navigate("order")}
-className="bg-black text-white px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition"
+className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition shadow-lg"
 >
 Order Now
 </button>
