@@ -55,6 +55,17 @@ rating: 5
 }
 ];
 
+const GALLERY = [
+"/templates/salon-opening.png",
+"/templates/salon-makeup.png",
+"/templates/gym-offer.png",
+"/templates/gym-membership.png",
+"/templates/catering-service.png",
+"/templates/sweets-menu.png",
+"/templates/kirana-sale.png",
+"/templates/coaching-admission.png"
+];
+
 /* WHATSAPP FUNCTION */
 
 const openWhatsApp = (context = "") => {
@@ -264,6 +275,61 @@ offer.highlight
 </div>
 
 ))}
+
+</div>
+
+</div>
+
+</section>
+{/* POSTER GALLERY */}
+
+<section className="py-24 px-4 bg-slate-50">
+
+<div className="max-w-6xl mx-auto">
+
+<div className="text-center mb-16">
+
+<h2 className="text-4xl font-black mb-4">
+Poster Gallery
+</h2>
+
+<p className="text-slate-500">
+Sample posters created for local businesses
+</p>
+
+</div>
+
+<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+{GALLERY.map((img,i)=>(
+  
+<div
+key={i}
+className="group rounded-2xl overflow-hidden shadow hover:shadow-xl transition cursor-pointer"
+>
+
+<img
+src={img}
+alt="Poster sample"
+className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+/>
+
+</div>
+
+))}
+
+</div>
+
+<div className="text-center mt-14">
+
+<button
+onClick={() => navigate("portfolio")}
+className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-2xl font-black text-lg shadow-lg"
+>
+
+View Full Portfolio
+
+</button>
 
 </div>
 
