@@ -201,7 +201,60 @@ Special 50% Off Sample Design
 </div>
 
 </section>
+{/* ABOUT POSTERBABU */}
 
+<section className="py-24 px-4 bg-white">
+
+<div className="max-w-5xl mx-auto text-center">
+
+<h2 className="text-4xl font-black mb-6">
+What is PosterBabu?
+</h2>
+
+<p className="text-lg text-slate-600 leading-relaxed mb-10 max-w-3xl mx-auto">
+PosterBabu is a fast design service that helps small businesses get 
+professional social media posters in minutes. Whether you run a salon, 
+gym, cafe, coaching center, or shop, we create ready-to-post designs 
+for your offers, promotions, and festivals.
+</p>
+
+<div className="grid md:grid-cols-3 gap-8 mt-12">
+
+<div className="bg-slate-50 p-8 rounded-2xl">
+<h3 className="font-bold text-lg mb-3">
+For Local Businesses
+</h3>
+<p className="text-slate-600 text-sm">
+Perfect for salons, gyms, cafes, retail stores, and coaching centers
+who want to promote offers online.
+</p>
+</div>
+
+<div className="bg-slate-50 p-8 rounded-2xl">
+<h3 className="font-bold text-lg mb-3">
+Fast Poster Delivery
+</h3>
+<p className="text-slate-600 text-sm">
+Send your request on WhatsApp and receive your poster in minutes,
+ready to post on Instagram or WhatsApp.
+</p>
+</div>
+
+<div className="bg-slate-50 p-8 rounded-2xl">
+<h3 className="font-bold text-lg mb-3">
+Affordable Design
+</h3>
+<p className="text-slate-600 text-sm">
+Professional poster designs starting at just ₹49,
+making marketing easy for every small business.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
 {/* ENTRY OFFERS */}
 
 <section className="py-24 bg-slate-50 px-4">
