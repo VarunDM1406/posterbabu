@@ -8,7 +8,7 @@ const ENTRY_OFFERS = [
 name: "Fast Edit",
 oldPrice: 99,
 newPrice: 49,
-tagline: "Perfect for quick updates",
+tagline: "Perfect for quick changes",
 features: [
 "Edit existing poster",
 "Text or offer update",
@@ -32,25 +32,23 @@ highlight: true
 }
 ];
 
-/* TESTIMONIALS */
-
 const TESTIMONIALS = [
 {
 name: "Rahul",
 biz: "Gym Owner",
-text: "PosterBabu made my gym posters in 10 minutes. Extremely professional.",
+text: "PosterBabu made my gym posters in 10 minutes. Amazing service.",
 rating: 5
 },
 {
 name: "Sushma",
 biz: "Salon Owner",
-text: "I just send a WhatsApp message and get beautiful designs instantly.",
+text: "Just one WhatsApp message and I get beautiful designs instantly.",
 rating: 5
 },
 {
 name: "Amit",
 biz: "Cafe Owner",
-text: "Very affordable and quick. Perfect for small businesses.",
+text: "Very affordable and fast. Perfect for small businesses.",
 rating: 5
 }
 ];
@@ -71,7 +69,7 @@ const GALLERY = [
 const openWhatsApp = (context = "") => {
 
 const baseMessage = context
-? `Hi PosterBabu! I'm interested in: ${context}.\n\nBusiness Name:\nPoster Details:`
+? `Hi PosterBabu! I'm interested in: ${context}.\n\nBusiness Name:\nDetails:`
 : "Hi PosterBabu! I want to order a poster for my business.";
 
 window.open(
@@ -98,49 +96,57 @@ return (
 <div className="flex-1 text-center md:text-left">
 
 <div className="inline-flex items-center gap-2 bg-orange-50 text-orange-700 px-4 py-1.5 rounded-full text-xs font-black tracking-widest mb-8 uppercase">
-<Zap size={14} fill="currentColor"/>
-Fast Poster Design Service
+<Zap size={14}/>
+Fast Poster Design
 </div>
 
 <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight text-slate-900">
-Professional Posters <br/>
-for Your Business in <span className="text-orange-600">Minutes</span>
+Create Professional
+<br/>
+<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
+Social Media Posters
+</span>
+<br/>
+in Minutes
 </h1>
 
 <p className="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
-Promotional posters, offer creatives, and festival designs made for local businesses and delivered instantly via WhatsApp.
+Promotional posters and marketing creatives designed for small businesses and delivered instantly via WhatsApp.
 </p>
 
 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
 
 <button
-onClick={() => openWhatsApp("Poster Order")}
+onClick={()=>openWhatsApp("Poster Order")}
 className="bg-green-600 hover:bg-green-700 text-white px-10 py-5 rounded-2xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95"
+
 >
-<MessageCircle fill="currentColor"/>
+
+<MessageCircle/>
 Order on WhatsApp
 </button>
 
 <button
-onClick={() => navigate("pricing")}
+onClick={()=>navigate("pricing")}
 className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-10 py-5 rounded-2xl font-bold text-xl"
+
 >
-View Pricing
-</button>
+
+View Pricing </button>
 
 </div>
 
 {/* TRUST */}
 
-<div className="flex flex-col sm:flex-row gap-6 mt-8 text-sm text-slate-600 font-semibold">
+<div className="flex flex-wrap gap-6 mt-8 text-sm text-slate-600 font-semibold">
 
 <div className="flex items-center gap-2">
-<Star size={16} fill="currentColor" className="text-orange-500"/>
-4.9 Customer Rating
+<Star size={16} className="text-orange-500" fill="currentColor"/>
+4.9 Rating
 </div>
 
 <div>
-Trusted by 20+ Local Businesses
+100+ Posters Delivered
 </div>
 
 <div>
@@ -149,36 +155,9 @@ Trusted by 20+ Local Businesses
 
 </div>
 
-{/* STATS */}
-
-<div className="grid grid-cols-3 text-center md:text-left mt-16 border-t pt-10">
-
-<div>
-<p className="text-3xl font-black text-slate-900">100+</p>
-<p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-Posters Delivered
-</p>
 </div>
 
-<div className="border-x">
-<p className="text-3xl font-black text-slate-900">20+</p>
-<p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-Businesses Served
-</p>
-</div>
-
-<div>
-<p className="text-3xl font-black text-orange-600">4.9★</p>
-<p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-Customer Rating
-</p>
-</div>
-
-</div>
-
-</div>
-
-{/* RIGHT HERO IMAGE */}
+{/* HERO IMAGE */}
 
 <div className="flex-1 relative hidden md:block">
 
@@ -186,18 +165,18 @@ Customer Rating
 
 <img
 src="/templates/gym-offer.png"
-alt="Poster Example"
+alt="Poster Sample"
 className="rounded-[2.5rem] w-full h-[500px] object-cover"
 />
 
 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-4/5 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-xl border border-slate-100">
 
 <p className="text-[10px] font-black text-orange-600 uppercase mb-1">
-Sample Poster
+Gym Poster
 </p>
 
 <p className="font-bold text-slate-900 text-sm leading-tight">
-Special 50% Off Gym Membership
+Special 50% Off Membership
 </p>
 
 </div>
@@ -223,32 +202,31 @@ What is PosterBabu?
 <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 mb-6 rounded"></div>
 
 <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-PosterBabu helps local businesses get professional promotional posters quickly.
-Send your request on WhatsApp and receive ready-to-post designs within minutes.
+PosterBabu helps local businesses promote offers and services with professional marketing posters.
 </p>
 
 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-14">
 
-<div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+<div className="bg-white p-8 rounded-xl border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
 
-<div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-500 rounded-full mx-auto mb-5">
-<Store size={28}/>
+<div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-600 rounded-full mx-auto mb-5">
+<Store size={26}/>
 </div>
 
 <h3 className="text-xl font-semibold mb-3">
-For Local Businesses
+Local Business Focus
 </h3>
 
 <p className="text-gray-600">
-Perfect for salons, gyms, cafes, shops, and coaching centers.
+Perfect for salons, gyms, cafes, shops and coaching centers.
 </p>
 
 </div>
 
-<div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+<div className="bg-white p-8 rounded-xl border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
 
-<div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-500 rounded-full mx-auto mb-5">
-<Zap size={28}/>
+<div className="w-14 h-14 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-full mx-auto mb-5">
+<Zap size={26}/>
 </div>
 
 <h3 className="text-xl font-semibold mb-3">
@@ -256,23 +234,23 @@ Fast Delivery
 </h3>
 
 <p className="text-gray-600">
-Get ready-to-post designs delivered to your WhatsApp in minutes.
+Send a request and receive ready-to-post designs in minutes.
 </p>
 
 </div>
 
-<div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+<div className="bg-white p-8 rounded-xl border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
 
-<div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-500 rounded-full mx-auto mb-5">
-<Tag size={28}/>
+<div className="w-14 h-14 flex items-center justify-center bg-green-100 text-green-600 rounded-full mx-auto mb-5">
+<Tag size={26}/>
 </div>
 
 <h3 className="text-xl font-semibold mb-3">
-Affordable Pricing
+Affordable Marketing
 </h3>
 
 <p className="text-gray-600">
-Professional poster designs starting at just ₹49.
+Professional poster designs starting from ₹49.
 </p>
 
 </div>
@@ -283,7 +261,7 @@ Professional poster designs starting at just ₹49.
 
 </section>
 
-{/* POSTER GALLERY */}
+{/* GALLERY */}
 
 <section className="py-24 px-4 bg-slate-50">
 
@@ -296,7 +274,7 @@ Poster Gallery
 </h2>
 
 <p className="text-slate-500">
-Examples of posters created for local businesses
+Examples created for real businesses
 </p>
 
 </div>
@@ -305,15 +283,12 @@ Examples of posters created for local businesses
 
 {GALLERY.map((img,i)=>(
 
-<div
-key={i}
-className="group rounded-2xl overflow-hidden shadow hover:shadow-xl transition cursor-pointer"
->
+<div key={i} className="group rounded-2xl overflow-hidden shadow hover:shadow-xl transition">
 
 <img
 src={img}
 alt="Poster sample"
-className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+className="w-full h-full object-cover group-hover:scale-105 group-hover:brightness-110 transition duration-500"
 />
 
 </div>
@@ -326,9 +301,9 @@ className="w-full h-full object-cover group-hover:scale-105 transition duration-
 
 </section>
 
-{/* ENTRY OFFERS */}
+{/* PRICING */}
 
-<section className="py-24 bg-slate-50 px-4">
+<section className="py-24 px-4 bg-slate-50">
 
 <div className="max-w-4xl mx-auto">
 
@@ -339,7 +314,7 @@ Try PosterBabu Today
 </h2>
 
 <p className="text-slate-500 italic">
-Affordable entry pricing. No commitment required.
+Affordable designs. No commitment required.
 </p>
 
 </div>
@@ -352,7 +327,7 @@ Affordable entry pricing. No commitment required.
 key={i}
 className={`bg-white p-10 rounded-3xl border-2 flex flex-col ${
 offer.highlight
-? "border-orange-500 shadow-xl"
+? "border-orange-500 shadow-[0_10px_40px_rgba(249,115,22,0.25)]"
 : "border-slate-100"
 }`}
 >
@@ -375,6 +350,7 @@ offer.highlight
 <ul className="space-y-3 mb-8">
 
 {offer.features.map((f,j)=>(
+
 <li key={j} className="flex items-center gap-3 text-slate-600 font-bold">
 <CheckCircle size={18} className="text-green-500"/>
 {f}
@@ -390,9 +366,10 @@ offer.highlight
 ? "bg-orange-600 text-white"
 : "bg-slate-100"
 }`}
+
 >
-{offer.button}
-</button>
+
+{offer.button} </button>
 
 </div>
 
@@ -403,7 +380,57 @@ offer.highlight
 </div>
 
 </section>
+{/* HOW POSTERBABU WORKS */}
 
+<section className="py-24 px-4 bg-indigo-950 text-white text-center">
+
+<div className="max-w-4xl mx-auto">
+
+<h2 className="text-3xl font-black mb-16 uppercase tracking-widest">
+How PosterBabu Works
+</h2>
+
+<div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+{[
+{
+step: "01",
+title: "WhatsApp Request",
+desc: "Send your poster request directly on WhatsApp."
+},
+{
+step: "02",
+title: "We Design",
+desc: "Our designer creates your poster within minutes."
+},
+{
+step: "03",
+title: "Receive & Post",
+desc: "Receive ready-to-post designs instantly."
+}
+].map((s,i)=>(
+<div key={i} className="flex flex-col items-center">
+
+<div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-orange-500 font-black text-xl border border-white/20">
+{s.step}
+</div>
+
+<h3 className="font-bold text-xl mb-3">
+{s.title}
+</h3>
+
+<p className="text-indigo-200 text-sm leading-relaxed max-w-xs">
+{s.desc}
+</p>
+
+</div>
+))}
+
+</div>
+
+</div>
+
+</section>
 {/* TESTIMONIALS */}
 
 <section className="py-24 px-4">
@@ -421,11 +448,9 @@ What Our Clients Say
 <div key={i} className="bg-slate-50 p-8 rounded-2xl">
 
 <div className="flex gap-1 text-orange-500 mb-4">
-
 {[...Array(t.rating)].map((_,j)=>(
 <Star key={j} size={14} fill="currentColor"/>
 ))}
-
 </div>
 
 <p className="italic mb-6">
@@ -450,7 +475,7 @@ What Our Clients Say
 
 </section>
 
-{/* FINAL CTA */}
+{/* CTA */}
 
 <section className="py-24 px-6">
 
@@ -461,33 +486,16 @@ Ready to Promote Your Business?
 </h2>
 
 <p className="text-orange-100 text-lg mb-10 max-w-xl mx-auto">
-Order your first promotional poster in minutes.
+Get professional posters designed in minutes.
 </p>
-
-<div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-<button
-onClick={()=>navigate("services")}
-className="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold hover:scale-105 transition shadow-md"
->
-View Services
-</button>
-
-<button
-onClick={()=>navigate("pricing")}
-className="bg-white/20 backdrop-blur border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/30 transition"
->
-View Pricing
-</button>
 
 <button
 onClick={()=>navigate("order")}
 className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition shadow-lg"
->
-Order Now
-</button>
 
-</div>
+>
+
+Order Now </button>
 
 </div>
 
@@ -498,7 +506,9 @@ Order Now
 <button
 onClick={()=>openWhatsApp()}
 className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl z-50"
+
 >
+
 <MessageCircle/>
 </button>
 
