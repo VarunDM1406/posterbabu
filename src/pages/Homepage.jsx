@@ -1,6 +1,6 @@
 import React from "react";
 import { MessageCircle, Zap, CheckCircle, Star } from "lucide-react";
-
+import { Store, Zap, Tag } from "lucide-react";
 /* ENTRY OFFERS */
 
 const ENTRY_OFFERS = [
@@ -139,6 +139,87 @@ View Pricing
 
 </div>
 
+
+{/* What is PosterBabu Section */}
+
+<section className="py-20 bg-gradient-to-b from-white to-gray-50">
+
+  <div className="max-w-6xl mx-auto px-6 text-center">
+
+    <h2 className="text-4xl font-bold text-gray-900">
+      What is PosterBabu?
+    </h2>
+
+    <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 mb-6 rounded"></div>
+
+    <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+      PosterBabu is a fast design service that helps small businesses get
+      professional social media posters in minutes. Whether you run a salon,
+      gym, cafe, coaching center, or shop, we create ready-to-post designs
+      for your offers, promotions, and festivals.
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-14">
+
+      {/* Card 1 */}
+      <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+
+        <div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-500 rounded-full mx-auto mb-5">
+          <Store size={28}/>
+        </div>
+
+        <h3 className="text-xl font-semibold mb-3">
+          For Local Businesses
+        </h3>
+
+        <p className="text-gray-600">
+          Perfect for salons, gyms, cafes, retail stores, and coaching
+          centers who want to promote offers online and attract more customers.
+        </p>
+
+      </div>
+
+      {/* Card 2 */}
+      <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+
+        <div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-500 rounded-full mx-auto mb-5">
+          <Zap size={28}/>
+        </div>
+
+        <h3 className="text-xl font-semibold mb-3">
+          Fast Poster Delivery
+        </h3>
+
+        <p className="text-gray-600">
+          Send your request on WhatsApp and receive your poster in minutes,
+          ready to post on Instagram or WhatsApp.
+        </p>
+
+      </div>
+
+      {/* Card 3 */}
+      <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+
+        <div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-500 rounded-full mx-auto mb-5">
+          <Tag size={28}/>
+        </div>
+
+        <h3 className="text-xl font-semibold mb-3">
+          Affordable Design
+        </h3>
+
+        <p className="text-gray-600">
+          Professional poster designs starting at just ₹49, making marketing
+          easy and affordable for every small business.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 {/* STATS BAR */}
 
 <div className="grid grid-cols-3 text-center md:text-left mt-16 border-t pt-10">
@@ -201,60 +282,7 @@ Special 50% Off Sample Design
 </div>
 
 </section>
-{/* ABOUT POSTERBABU */}
 
-<section className="py-24 px-4 bg-white">
-
-<div className="max-w-5xl mx-auto text-center">
-
-<h2 className="text-4xl font-black mb-6">
-What is PosterBabu?
-</h2>
-
-<p className="text-lg text-slate-600 leading-relaxed mb-10 max-w-3xl mx-auto">
-PosterBabu is a fast design service that helps small businesses get 
-professional social media posters in minutes. Whether you run a salon, 
-gym, cafe, coaching center, or shop, we create ready-to-post designs 
-for your offers, promotions, and festivals.
-</p>
-
-<div className="grid md:grid-cols-3 gap-8 mt-12">
-
-<div className="bg-slate-50 p-8 rounded-2xl">
-<h3 className="font-bold text-lg mb-3">
-For Local Businesses
-</h3>
-<p className="text-slate-600 text-sm">
-Perfect for salons, gyms, cafes, retail stores, and coaching centers
-who want to promote offers online.
-</p>
-</div>
-
-<div className="bg-slate-50 p-8 rounded-2xl">
-<h3 className="font-bold text-lg mb-3">
-Fast Poster Delivery
-</h3>
-<p className="text-slate-600 text-sm">
-Send your request on WhatsApp and receive your poster in minutes,
-ready to post on Instagram or WhatsApp.
-</p>
-</div>
-
-<div className="bg-slate-50 p-8 rounded-2xl">
-<h3 className="font-bold text-lg mb-3">
-Affordable Design
-</h3>
-<p className="text-slate-600 text-sm">
-Professional poster designs starting at just ₹49,
-making marketing easy for every small business.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
 {/* ENTRY OFFERS */}
 
 <section className="py-24 bg-slate-50 px-4">
