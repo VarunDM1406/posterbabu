@@ -7,8 +7,9 @@ import PortfolioPage from "./pages/PortfolioPage";
 import PricingPage   from "./pages/PricingPage";
 import OrderPage     from "./pages/OrderPage";
 import ContactPage   from "./pages/ContactPage";
-import TrackOrderPage from "./pages/TrackOrderPage";
-import AdminPage     from "./pages/AdminPage";
+import TrackOrderPage  from "./pages/TrackOrderPage";
+import AdminPage      from "./pages/AdminPage";
+import DashboardPage  from "./pages/DashboardPage";
 
 import { TrustBar, LanguageProvider } from "./NoDBFeatures";
 
@@ -42,6 +43,7 @@ function App() {
       case "contact":   return <ContactPage />;
       case "track":     return <TrackOrderPage />;
       case "admin":     return <AdminPage />;
+      case "dashboard": return <DashboardPage />;
       default:          return <Homepage navigate={navigate} />;
     }
   };
