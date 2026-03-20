@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Zap, Menu, X, MessageCircle, Mail, MapPin, Instagram } from "lucide-react";
 
-import Homepage     from "./pages/Homepage";
-import ServicesPage from "./pages/ServicesPage";
+import Homepage      from "./pages/Homepage";
+import ServicesPage  from "./pages/ServicesPage";
 import PortfolioPage from "./pages/PortfolioPage";
-import PricingPage  from "./pages/PricingPage";
-import OrderPage    from "./pages/OrderPage";
-import ContactPage  from "./pages/ContactPage";
+import PricingPage   from "./pages/PricingPage";
+import OrderPage     from "./pages/OrderPage";
+import ContactPage   from "./pages/ContactPage";
+import TrackOrderPage from "./pages/TrackOrderPage";
+import AdminPage     from "./pages/AdminPage";
 
 import { TrustBar, LanguageProvider, LangToggle } from "./NoDBFeatures";
 
+// Read URL params to handle /track?id=XX and /admin routes
+const getInitialPage = () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("page") === "track") return "track";
+  if (params.get("page") === "admin") return "admin";
+  return "home";
+};
+
 function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState(getInitialPage);
   const [isMenuOpen, setIsMenuOpen]   = useState(false);
 
   useEffect(() => {
@@ -29,6 +39,8 @@ function App() {
       case "pricing":   return <PricingPage navigate={navigate} />;
       case "order":     return <OrderPage />;
       case "contact":   return <ContactPage />;
+      case "track":     return <TrackOrderPage />;
+      case "admin":     return <AdminPage />;
       default:          return <Homepage navigate={navigate} />;
     }
   };
@@ -134,8 +146,7 @@ function App() {
           `}</style>
         </nav>
 
-        {/* ── TRUST BAR ── */}
-        <TrustBar />
+        {currentPage !== "track" && currentPage !== "admin" && <TrustBar />}
 
         {/* ── PAGE CONTENT ── */}
         <main>{renderPage()}</main>
