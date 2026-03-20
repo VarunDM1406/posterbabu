@@ -68,12 +68,12 @@ const PRICING_PLANS = [
 ];
 
 const FAQS = [
-  { q: "How do I place an order?", a: "Click any button and you'll be taken to WhatsApp where you can send your details. We'll confirm and start designing immediately." },
-  { q: "How fast will I receive my poster?", a: "Fast Edit orders are typically done in 10–20 minutes. Custom designs take 30–60 minutes depending on complexity." },
+  { q: "How do I place an order?", a: "To place an order select the menu bar and scroll down to Order now or connect with us by clicking on the WhatsApp icon placed bottom right of the page. Upon confirmation of the order our team promptly initiates the designing process." },
+  { q: "How fast will I receive my poster?", a: "After the confirmation of your order by the team, Fast Edit orders are typically done in 10–30 minutes, Custom designs takes time and effort depending on complexity." },
   { q: "Can I request changes to the design?", a: "Yes — one round of revisions is included with every order. Just tell us what to change on WhatsApp." },
-  { q: "Do I need to pay upfront?", a: "No. We send you the draft first. You pay only after you're happy with it." },
-  { q: "What format will I receive the file in?", a: "You'll get a high-resolution PNG or JPG, ready to post on Instagram, WhatsApp, or print." },
-  { q: "Is there any long-term contract?", a: "None at all. Monthly plans can be cancelled anytime with no questions asked." },
+  { q: "Do I need to pay upfront?", a: "We take a 50% advance to get started 😊. Once we share the first draft, the advance is non-refundable. The remaining payment can be made after you're satisfied with the final design." },
+  { q: "What format will I receive the file in?", a: "You'll get a high-resolution PNG or JPG, ready to post on Social Media Platforms." },
+  { q: "Is there any long-term contract?", a: "There is no long-term contract. Monthly plans can be cancelled anytime. Please note that once a plan is purchased, it is non-refundable. Any unused posters within the billing cycle will not be carried forward to the next month." },
 ];
 
 const openWhatsApp = (plan = "") => {
@@ -424,10 +424,10 @@ const PricingPage = ({ navigate }) => {
       <section style={{ padding: "80px max(24px, 5vw)" }}>
         <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 900, marginBottom: 16 }}>
-            Still not sure? <span style={{ color: "#D05B37" }}>Try ₹49 first.</span>
+            Still not sure? <span style={{ color: "#D05B37" }}>Try ₹149 first.</span>
           </h2>
           <p style={{ color: "#9895B0", fontSize: 16, marginBottom: 32, lineHeight: 1.7 }}>
-            Order a single Fast Edit for ₹49. If you love it, subscribe. If not, no hard feelings.
+            Order a Design for your Business at just ₹149. Try Once! Subscribe Later!
           </p>
           <button
             onClick={() => openWhatsApp("Fast Edit ₹49")}
