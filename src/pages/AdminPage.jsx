@@ -1,44 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { MessageCircle, Plus, RefreshCw, CheckCircle, Copy, ExternalLink } from "lucide-react";
+import { MessageCircle, Plus, RefreshCw, CheckCircle, Copy, Trash2, Download } from "lucide-react";
 import { supabase } from "../supabaseClient";
 
-// ── Simple admin password protection ──────────────────────────
-// Change this to whatever password you want
 const ADMIN_PASSWORD = "posterbabu2024";
+
+// ── Optional: paste your Make webhook URL here to auto-sync to Google Sheets
+// Leave as empty string "" if you haven't set it up yet
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/mujzjctt5he038xxxto8arrcs6yzjrv5";
 
 const STATUS_LABELS = ["", "Received", "Designing", "Review Sent", "Delivered"];
 const STATUS_COLORS = ["", "#9895B0", "#D05B37", "#a78bfa", "#22c55e"];
-const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/mujzjctt5he038xxxto8arrcs6yzjrv5";
-const generateId = () => {
-  const num = Math.floor(1000 + Math.random() * 9000);
-  return `PB-${num}`;
-};
+
+const generateId = () => `PB-${Math.floor(1000 + Math.random() * 9000)}`;
 
 const AdminPage = () => {
-  const [authed, setAuthed]       = useState(false);
-  const [password, setPassword]   = useState("");
-  const [pwError, setPwError]     = useState(false);
-  const [orders, setOrders]       = useState([]);
-  const [loading, setLoading]     = useState(true);
-  const [creating, setCreating]   = useState(false);
-  const [copied, setCopied]       = useState(null);
-  const [newOrder, setNewOrder]   = useState({ customer: "", business: "", poster_type: "Fast Edit (₹49)", details: "" });
+  const [authed, setAuthed]         = useState(false);
+  const [password, setPassword]     = useState("");
+  const [pwError, setPwError]       = useState(false);
+  const [orders, setOrders]         = useState([]);
+  const [loading, setLoading]       = useState(true);
+  const [creating, setCreating]     = useState(false);
+  const [copied, setCopied]         = useState(null);
+  const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const [newOrder, setNewOrder]     = useState({ customer: "", business: "", poster_type: "Fast Edit (₹49)", details: "" });
 
-  useEffect(() => {
-    if (authed) fetchOrders();
-  }, [authed]);
+  useEffect(() => { if (authed) fetchOrders(); }, [authed]);
 
   const login = () => {
     if (password === ADMIN_PASSWORD) { setAuthed(true); setPwError(false); }
-    else { setPwError(true); }
+    else setPwError(true);
   };
 
   const fetchOrders = async () => {
     setLoading(true);
-    const { data } = await supabase
-      .from("orders")
-      .select("*")
-      .order("created_at", { ascending: false });
+    const { data } = await supabase.from("orders").select("*").order("created_at", { ascending: false });
     setOrders(data || []);
     setLoading(false);
   };
@@ -46,15 +41,24 @@ const AdminPage = () => {
   const createOrder = async (e) => {
     e.preventDefault();
     const id = generateId();
-    const { error } = await supabase.from("orders").insert({
+    const orderData = {
       id,
       customer:    newOrder.customer,
       business:    newOrder.business,
       poster_type: newOrder.poster_type,
       details:     newOrder.details,
       status:      1,
-    });
+    };
+    const { error } = await supabase.from("orders").insert(orderData);
     if (!error) {
+      // ── Auto-sync to Google Sheets via Make webhook (if configured)
+      if (MAKE_WEBHOOK_URL) {
+        fetch(MAKE_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...orderData, created_at: new Date().toISOString() }),
+        }).catch(() => {}); // silent fail — don't block the UI
+      }
       setNewOrder({ customer: "", business: "", poster_type: "Fast Edit (₹49)", details: "" });
       setCreating(false);
       fetchOrders();
@@ -62,16 +66,42 @@ const AdminPage = () => {
   };
 
   const updateStatus = async (id, newStatus) => {
-    await supabase
-      .from("orders")
-      .update({ status: newStatus, updated_at: new Date().toISOString() })
-      .eq("id", id);
+    await supabase.from("orders").update({ status: newStatus, updated_at: new Date().toISOString() }).eq("id", id);
     setOrders(prev => prev.map(o => o.id === id ? { ...o, status: newStatus } : o));
   };
 
+  const deleteOrder = async (id) => {
+    await supabase.from("orders").delete().eq("id", id);
+    setOrders(prev => prev.filter(o => o.id !== id));
+    setDeleteConfirm(null);
+  };
+
+  // ── Export all orders as a CSV file
+  const exportCSV = () => {
+    const headers = ["Order ID", "Customer", "Business", "Service", "Details", "Status", "Created At"];
+    const rows = orders.map(o => [
+      o.id,
+      o.customer,
+      o.business,
+      o.poster_type,
+      o.details || "",
+      STATUS_LABELS[o.status],
+      new Date(o.created_at).toLocaleString("en-IN"),
+    ]);
+    const csv = [headers, ...rows]
+      .map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+      .join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement("a");
+    a.href     = url;
+    a.download = `posterbabu-orders-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const copyTrackLink = (id) => {
-    const link = `${window.location.origin}?page=track&id=${id}`;
-    navigator.clipboard.writeText(link);
+    navigator.clipboard.writeText(`${window.location.origin}?page=track&id=${id}`);
     setCopied(id);
     setTimeout(() => setCopied(null), 2000);
   };
@@ -102,18 +132,12 @@ const AdminPage = () => {
           <div style={{ width: 48, height: 48, background: "#D05B37", borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontFamily: "'Playfair Display',serif", fontSize: 22, fontWeight: 900, color: "#F5F0E8" }}>P</div>
           <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 24, fontWeight: 900, color: "#F5F0E8", marginBottom: 6 }}>Admin Panel</h2>
           <p style={{ color: "#9895B0", fontSize: 14, marginBottom: 28 }}>PosterBabu — internal use only</p>
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            onKeyDown={e => e.key === "Enter" && login()}
+          <input type="password" placeholder="Enter password" value={password}
+            onChange={e => setPassword(e.target.value)} onKeyDown={e => e.key === "Enter" && login()}
             style={{ width: "100%", background: "#0C0A1E", border: `1px solid ${pwError ? "#E24B4A" : "#2E2B45"}`, color: "#F5F0E8", padding: "13px 16px", borderRadius: 12, fontSize: 15, fontFamily: "'DM Sans',sans-serif", outline: "none", marginBottom: 12 }}
           />
           {pwError && <p style={{ color: "#E24B4A", fontSize: 13, marginBottom: 12 }}>Wrong password. Try again.</p>}
-          <button onClick={login} style={{ width: "100%", background: "#D05B37", color: "#F5F0E8", border: "none", padding: 14, borderRadius: 12, fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}>
-            Login
-          </button>
+          <button onClick={login} style={{ width: "100%", background: "#D05B37", color: "#F5F0E8", border: "none", padding: 14, borderRadius: 12, fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}>Login</button>
         </div>
       </div>
     );
@@ -133,21 +157,28 @@ const AdminPage = () => {
         .adm-btn:hover{opacity:0.85;}
         .status-btn{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:opacity 0.2s;}
         .status-btn:hover{opacity:0.75;}
+        .del-btn{border:none;padding:8px;border-radius:8px;cursor:pointer;background:rgba(226,75,74,0.1);color:#E24B4A;display:inline-flex;align-items:center;justify-content:center;transition:background 0.2s;}
+        .del-btn:hover{background:rgba(226,75,74,0.25);}
         @keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
         .order-row{animation:fadeup 0.3s ease both;}
-        @media(max-width:768px){.order-grid{grid-template-columns:1fr!important;}.adm-header{flex-direction:column!important;gap:12px!important;}}
+        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+        .confirm-del{animation:shake 0.3s ease;}
+        @media(max-width:768px){.order-grid{grid-template-columns:1fr!important;}.adm-header{flex-direction:column!important;gap:12px!important;}.action-row{flex-direction:column!important;align-items:flex-start!important;}}
       `}</style>
 
       {/* Header */}
       <div style={{ background: "#0C0A1E", borderBottom: "1px solid #2E2B45", padding: "0 max(24px,5vw)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }} className="adm-header">
+        <div style={{ maxWidth: 1100, margin: "0 auto", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }} className="adm-header">
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 28, height: 28, background: "#D05B37", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 14, color: "#F5F0E8", fontFamily: "'Playfair Display',serif" }}>P</div>
             <span style={{ fontWeight: 900, fontSize: 17 }}>Poster<span style={{ color: "#D05B37" }}>Babu</span> <span style={{ color: "#9895B0", fontSize: 13, fontWeight: 500 }}>Admin</span></span>
           </div>
-          <div style={{ display: "flex", gap: 10 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <button className="adm-btn" onClick={fetchOrders} style={{ background: "#1A1830", color: "#9895B0", border: "1px solid #2E2B45" }}>
               <RefreshCw size={14} /> Refresh
+            </button>
+            <button className="adm-btn" onClick={exportCSV} style={{ background: "#1A1830", color: "#22c55e", border: "1px solid rgba(34,197,94,0.3)" }}>
+              <Download size={14} /> Export CSV
             </button>
             <button className="adm-btn" onClick={() => setCreating(true)} style={{ background: "#D05B37", color: "#F5F0E8" }}>
               <Plus size={14} /> New Order
@@ -158,8 +189,8 @@ const AdminPage = () => {
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "28px max(24px,5vw)" }}>
 
-        {/* Stats row */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: 12, marginBottom: 24 }}>
+        {/* Stats */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(130px,1fr))", gap: 12, marginBottom: 24 }}>
           {[
             { label: "Total orders", value: orders.length },
             { label: "In progress",  value: orders.filter(o => o.status === 2).length, color: "#D05B37" },
@@ -172,6 +203,16 @@ const AdminPage = () => {
             </div>
           ))}
         </div>
+
+        {/* Google Sheets notice if webhook not set */}
+        {!MAKE_WEBHOOK_URL && (
+          <div style={{ background: "rgba(208,91,55,0.08)", border: "1px solid rgba(208,91,55,0.2)", borderRadius: 12, padding: "12px 16px", marginBottom: 20, display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{ fontSize: 16 }}>📊</span>
+            <p style={{ fontSize: 13, color: "#9895B0" }}>
+              Want orders to auto-sync to Google Sheets? Set up a Make webhook and paste the URL in <code style={{ color: "#D05B37", background: "rgba(208,91,55,0.1)", padding: "1px 6px", borderRadius: 4 }}>MAKE_WEBHOOK_URL</code> at the top of AdminPage.jsx.
+            </p>
+          </div>
+        )}
 
         {/* New order form */}
         {creating && (
@@ -203,12 +244,8 @@ const AdminPage = () => {
                 </div>
               </div>
               <div style={{ display: "flex", gap: 10 }}>
-                <button type="submit" className="adm-btn" style={{ background: "#D05B37", color: "#F5F0E8" }}>
-                  <Plus size={14} /> Create Order
-                </button>
-                <button type="button" className="adm-btn" onClick={() => setCreating(false)} style={{ background: "transparent", color: "#9895B0", border: "1px solid #2E2B45" }}>
-                  Cancel
-                </button>
+                <button type="submit" className="adm-btn" style={{ background: "#D05B37", color: "#F5F0E8" }}><Plus size={14} /> Create Order</button>
+                <button type="button" className="adm-btn" onClick={() => setCreating(false)} style={{ background: "transparent", color: "#9895B0", border: "1px solid #2E2B45" }}>Cancel</button>
               </div>
             </form>
           </div>
@@ -242,28 +279,20 @@ const AdminPage = () => {
                   </div>
 
                   {/* Right: actions */}
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}>
+                  <div className="action-row" style={{ display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}>
 
                     {/* Status buttons */}
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap", justifyContent: "flex-end" }}>
                       {[1,2,3,4].map(s => (
-                        <button
-                          key={s}
-                          className="status-btn"
-                          onClick={() => updateStatus(order.id, s)}
-                          style={{
-                            background: order.status === s ? STATUS_COLORS[s] : "transparent",
-                            color: order.status === s ? "#F5F0E8" : "#9895B0",
-                            border: `1px solid ${order.status === s ? STATUS_COLORS[s] : "#2E2B45"}`,
-                          }}
-                        >
+                        <button key={s} className="status-btn" onClick={() => updateStatus(order.id, s)}
+                          style={{ background: order.status === s ? STATUS_COLORS[s] : "transparent", color: order.status === s ? "#F5F0E8" : "#9895B0", border: `1px solid ${order.status === s ? STATUS_COLORS[s] : "#2E2B45"}` }}>
                           {STATUS_LABELS[s]}
                         </button>
                       ))}
                     </div>
 
                     {/* Action buttons */}
-                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", justifyContent: "flex-end" }}>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", justifyContent: "flex-end", alignItems: "center" }}>
                       <button className="adm-btn" onClick={() => copyTrackLink(order.id)} style={{ background: "#0C0A1E", color: copied === order.id ? "#22c55e" : "#9895B0", border: "1px solid #2E2B45" }}>
                         {copied === order.id ? <><CheckCircle size={13} /> Copied!</> : <><Copy size={13} /> Copy link</>}
                       </button>
@@ -273,6 +302,19 @@ const AdminPage = () => {
                       {order.status === 4 && (
                         <button className="adm-btn" onClick={() => sendReviewRequest(order)} style={{ background: "#D05B37", color: "#F5F0E8" }}>
                           ⭐ Ask review
+                        </button>
+                      )}
+
+                      {/* Delete button — shows confirm on first click */}
+                      {deleteConfirm === order.id ? (
+                        <div className="confirm-del" style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                          <span style={{ fontSize: 12, color: "#E24B4A", fontWeight: 600 }}>Sure?</span>
+                          <button className="adm-btn" onClick={() => deleteOrder(order.id)} style={{ background: "#E24B4A", color: "#F5F0E8", padding: "8px 12px" }}>Yes, delete</button>
+                          <button className="adm-btn" onClick={() => setDeleteConfirm(null)} style={{ background: "transparent", color: "#9895B0", border: "1px solid #2E2B45", padding: "8px 12px" }}>Cancel</button>
+                        </div>
+                      ) : (
+                        <button className="del-btn" onClick={() => setDeleteConfirm(order.id)} title="Delete order">
+                          <Trash2 size={15} />
                         </button>
                       )}
                     </div>
