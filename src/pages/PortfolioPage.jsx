@@ -13,7 +13,9 @@ const PORTFOLIO_ITEMS = [
 { id:10, cat:"Coaching", title:"English Speaking Classes", img:"/templates/coaching-crashcourse.png"},
 { id:11, cat:"Festival", title:"Holi Wishes", img:"/templates/holi-wish.png"},
 { id:12, cat:"Festival", title:"Diwali Sale Poster", img:"/templates/diwali-sale.png"},
-{ id:13, cat:"Retail", title:"Shyam Manufacturers Poster", img:"/templates/shyam_manufacturers.jpg"}
+{ id:13, cat:"Retail", title:"Shyam Manufacturers Poster", img:"/templates/shyam_manufacturers.png"},
+{ id:14, cat:"Coaching", title:"Expert Classes Banner", img:"/templates/expert_classes.jpg"},
+{ id:15, cat:"Retail",cat:"Festivals", title:"Navratari Special", img:"/templates/navratari.png"}
 ];
 
 const PortfolioPage = () => {

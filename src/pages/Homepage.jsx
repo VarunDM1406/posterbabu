@@ -164,7 +164,7 @@ View Pricing </button>
 <div className="relative bg-white p-4 rounded-[3rem] shadow-2xl border border-slate-100 rotate-2 hover:rotate-0 transition-transform duration-500 overflow-hidden">
 
 <img
-src="/templates/gym-offer.png"
+src="/templates/navratari.png"
 alt="Poster Sample"
 className="rounded-[2.5rem] w-full h-[500px] object-cover"
 />
@@ -172,11 +172,11 @@ className="rounded-[2.5rem] w-full h-[500px] object-cover"
 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-4/5 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-xl border border-slate-100">
 
 <p className="text-[10px] font-black text-orange-600 uppercase mb-1">
-Gym Poster
+Special Navratari Poster
 </p>
 
 <p className="font-bold text-slate-900 text-sm leading-tight">
-Special 50% Off Membership
+Shyam Manufacturers
 </p>
 
 </div>
