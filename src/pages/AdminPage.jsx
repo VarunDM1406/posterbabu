@@ -3,7 +3,8 @@ import { MessageCircle, Plus, RefreshCw, CheckCircle, Copy, Trash2, Download, Us
 import { supabase } from "../supabaseClient";
 
 const ADMIN_PASSWORD = "posterbabu2024";
-const MAKE_WEBHOOK_URL = ""; // paste your Make webhook URL here
+const MAKE_WEBHOOK_URL = ""; // orders webhook (currently unused)
+const MAKE_SUB_WEBHOOK_URL = "https://hook.eu1.make.com/6ykkduk4dj43084hkxo96uh6scp6rcrp";
 
 const STATUS_LABELS = ["", "Received", "Designing", "Review Sent", "Delivered"];
 const STATUS_COLORS = ["", "#9895B0", "#D05B37", "#a78bfa", "#22c55e"];
@@ -154,6 +155,25 @@ const AdminPage = () => {
       setCreating(false);
       fetchSubs();
 
+      // Sync to Google Sheets via Make
+      if (MAKE_SUB_WEBHOOK_URL) {
+        fetch(MAKE_SUB_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id,
+            customer:      newSub.customer,
+            business:      newSub.business,
+            phone:         newSub.phone,
+            plan:          plan,
+            posters_limit: config.limit,
+            status:        "active",
+            renew_date:    renewDate.toISOString(),
+            created_at:    new Date().toISOString(),
+          }),
+        }).catch(() => {});
+      }
+
       // Send dashboard link via WhatsApp
       const dashLink = `${window.location.origin}?page=dashboard&ph=${newSub.phone}`;
       const msg = `Hi ${newSub.customer}! 🎉\n\nYour PosterBabu ${plan.split(" ")[0]} subscription is now active!\n\nView your dashboard here:\n${dashLink}\n\nYou can track your poster usage and renewal date anytime. — PosterBabu 🎨`;
@@ -197,6 +217,13 @@ const AdminPage = () => {
   const cancelSub = async (id) => {
     await supabase.from("subscriptions").update({ status: "cancelled" }).eq("id", id);
     setSubs(prev => prev.map(s => s.id === id ? { ...s, status: "cancelled" } : s));
+    setDeleteConfirm(null);
+  };
+
+  const deleteSub = async (id) => {
+    await supabase.from("payments").delete().eq("subscription_id", id);
+    await supabase.from("subscriptions").delete().eq("id", id);
+    setSubs(prev => prev.filter(s => s.id !== id));
     setDeleteConfirm(null);
   };
 
@@ -512,6 +539,19 @@ const AdminPage = () => {
                                 </div>
                               ) : (
                                 <button className="del-btn" onClick={() => setDeleteConfirm(sub.id)}><Trash2 size={14} /></button>
+                              )
+                            )}
+                            {sub.status === "cancelled" && (
+                              deleteConfirm === `del-${sub.id}` ? (
+                                <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                                  <span style={{ fontSize: 11, color: "#E24B4A", fontWeight: 600 }}>Delete permanently?</span>
+                                  <button className="adm-btn" onClick={() => deleteSub(sub.id)} style={{ background: "#E24B4A", color: "#F5F0E8", padding: "7px 10px" }}>Yes, delete</button>
+                                  <button className="adm-btn" onClick={() => setDeleteConfirm(null)} style={{ background: "transparent", color: "#9895B0", border: "1px solid #2E2B45", padding: "7px 10px" }}>No</button>
+                                </div>
+                              ) : (
+                                <button className="adm-btn" onClick={() => setDeleteConfirm(`del-${sub.id}`)} style={{ background: "rgba(226,75,74,0.15)", color: "#E24B4A", border: "1px solid rgba(226,75,74,0.3)" }}>
+                                  <Trash2 size={13} /> Remove
+                                </button>
                               )
                             )}
                           </div>
