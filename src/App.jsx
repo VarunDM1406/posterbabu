@@ -10,13 +10,14 @@ import ContactPage   from "./pages/ContactPage";
 import TrackOrderPage from "./pages/TrackOrderPage";
 import AdminPage     from "./pages/AdminPage";
 
-import { TrustBar, LanguageProvider } from "./NoDBFeatures";
+import { TrustBar, LanguageProvider} from "./NoDBFeatures";
 
 // Read URL params to handle /track?id=XX and /admin routes
 const getInitialPage = () => {
   const params = new URLSearchParams(window.location.search);
-  if (params.get("page") === "track") return "track";
-  if (params.get("page") === "admin") return "admin";
+  if (params.get("page") === "track")     return "track";
+  if (params.get("page") === "admin")     return "admin";
+  if (params.get("page") === "dashboard") return "dashboard";
   return "home";
 };
 
@@ -102,6 +103,7 @@ function App() {
                   {link.label}
                 </button>
               ))}
+              
               <button className="app-order-btn" onClick={() => navigate("order")}>Order Now</button>
             </div>
 
@@ -128,7 +130,8 @@ function App() {
                 </button>
               ))}
               <div style={{ padding: "12px 20px 4px", display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button className="app-order-btn" onClick={() => navigate("order")} style={{ flex: 1 }}>
+                 
+                <button className="app-order-btn" onClick={() => navigate("order")} style={{ flex: 1 }}>
                   Order Now
                 </button>
               </div>
@@ -144,7 +147,7 @@ function App() {
           `}</style>
         </nav>
 
-        {currentPage !== "track" && currentPage !== "admin" && currentPage !== "dashboard" && <TrustBar />}
+        {currentPage !== "track" && currentPage !== "admin" && <TrustBar />}
 
         {/* ── PAGE CONTENT ── */}
         <main>{renderPage()}</main>
