@@ -229,7 +229,7 @@ export function BeforeAfterSlider({
         <div
           ref={containerRef}
           style={{
-            position: "relative", aspectRatio: "4/3", borderRadius: 24,
+            position: "relative", aspectRatio: "3/4", borderRadius: 24, maxWidth: 500, margin: "0 auto",
             overflow: "hidden", cursor: "ew-resize", userSelect: "none",
             border: "1px solid #2E2B45",
             boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
