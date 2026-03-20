@@ -9,6 +9,8 @@ const STATUS_LABELS = ["", "Received", "Designing", "Review Sent", "Delivered"];
 const STATUS_COLORS = ["", "#9895B0", "#D05B37", "#a78bfa", "#22c55e"];
 
 const PLAN_CONFIG = {
+  "Starter - Special Discount (₹399)":  { limit: 8,  price: 399  },
+  "Growth - Special Discount (₹799)":  { limit: 8,  price: 799  },
   "Starter (₹499)":  { limit: 8,  price: 499  },
   "Growth (₹999)":   { limit: 20, price: 999  },
   "Pro (₹1999)":     { limit: 40, price: 1999 },
