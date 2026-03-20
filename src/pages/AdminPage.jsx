@@ -8,7 +8,7 @@ const ADMIN_PASSWORD = "posterbabu2024";
 
 const STATUS_LABELS = ["", "Received", "Designing", "Review Sent", "Delivered"];
 const STATUS_COLORS = ["", "#9895B0", "#D05B37", "#a78bfa", "#22c55e"];
-
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/mujzjctt5he038xxxto8arrcs6yzjrv5";
 const generateId = () => {
   const num = Math.floor(1000 + Math.random() * 9000);
   return `PB-${num}`;
