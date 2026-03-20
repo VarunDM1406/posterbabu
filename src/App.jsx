@@ -144,7 +144,7 @@ function App() {
           `}</style>
         </nav>
 
-        {currentPage !== "track" && currentPage !== "admin" && <TrustBar />}
+        {currentPage !== "track" && currentPage !== "admin" && currentPage !== "dashboard" && <TrustBar />}
 
         {/* ── PAGE CONTENT ── */}
         <main>{renderPage()}</main>
