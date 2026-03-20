@@ -15,7 +15,7 @@ const PORTFOLIO_ITEMS = [
 { id:12, cat:"Festival", title:"Diwali Sale Poster", img:"/templates/diwali-sale.png"},
 { id:13, cat:"Retail", title:"Shyam Manufacturers Poster", img:"/templates/shyam_manufacturers.png"},
 { id:14, cat:"Coaching", title:"Expert Classes Banner", img:"/templates/expert_classes.jpg"},
-{ id:15, cat:"Retail",cat:"Festivals", title:"Navratari Special", img:"/templates/navratari.png"}
+{ id:15, cat:"Festival", title:"Navratari Special", img:"/templates/navratari.png"}
 ];
 
 const PortfolioPage = () => {
