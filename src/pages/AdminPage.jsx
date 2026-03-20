@@ -9,9 +9,11 @@ const STATUS_LABELS = ["", "Received", "Designing", "Review Sent", "Delivered"];
 const STATUS_COLORS = ["", "#9895B0", "#D05B37", "#a78bfa", "#22c55e"];
 
 const PLAN_CONFIG = {
-  "Starter (₹499)":  { limit: 8,  price: 499  },
-  "Growth (₹999)":   { limit: 20, price: 999  },
-  "Pro (₹1999)":     { limit: 40, price: 1999 },
+  "Starter - Special Discount (₹399)": { limit: 8,  price: 399  },
+  "Growth - Special Discount (₹799)":  { limit: 20, price: 799  },
+  "Starter (₹499)":                    { limit: 8,  price: 499  },
+  "Growth (₹999)":                     { limit: 20, price: 999  },
+  "Pro (₹1999)":                       { limit: 40, price: 1999 },
 };
 
 const generateId = (prefix = "PB") => `${prefix}-${Math.floor(1000 + Math.random() * 9000)}`;
@@ -32,7 +34,7 @@ const AdminPage = () => {
   const [notes, setNotes]             = useState({});
 
   const [newOrder, setNewOrder] = useState({ customer: "", business: "", poster_type: "Fast Edit (₹49)", details: "" });
-  const [newSub, setNewSub]     = useState({ customer: "", business: "", phone: "", plan: "Starter (₹499)", renew_days: 30 });
+  const [newSub, setNewSub]     = useState({ customer: "", business: "", phone: "", plan: "Starter - Special Discount (₹399)", renew_days: 30 });
   const [newPayment, setNewPayment] = useState({ amount: "", note: "" });
 
   useEffect(() => { if (authed) { fetchOrders(); fetchSubs(); } }, [authed]);

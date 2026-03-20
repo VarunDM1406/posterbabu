@@ -3,12 +3,22 @@ import { MessageCircle, CheckCircle, Clock, Star, Package } from "lucide-react";
 import { supabase } from "../supabaseClient";
 
 const PLAN_LIMITS = {
+  "Starter - Special Discount (₹399)": 8,
+  "Growth - Special Discount (₹799)":  20,
+  "Starter (₹499)":                    8,
+  "Growth (₹999)":                     20,
+  "Pro (₹1999)":                       40,
   "Starter":  8,
   "Growth":   20,
   "Pro":      40,
 };
 
 const PLAN_COLORS = {
+  "Starter - Special Discount (₹399)": "#22c55e",
+  "Growth - Special Discount (₹799)":  "#D05B37",
+  "Starter (₹499)":                    "#9895B0",
+  "Growth (₹999)":                     "#D05B37",
+  "Pro (₹1999)":                       "#a78bfa",
   "Starter": "#9895B0",
   "Growth":  "#D05B37",
   "Pro":     "#a78bfa",

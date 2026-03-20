@@ -26,8 +26,8 @@ const PRICING_PLANS = [
   {
     name: "Starter",
     desc: "Perfect for small shops starting online",
-    oldPrice: 799,
-    newPrice: 499,
+    oldPrice: 499,
+    newPrice: 399,
     features: [
       "8 social media posters / month",
       "Festival creatives",
@@ -40,8 +40,8 @@ const PRICING_PLANS = [
   {
     name: "Growth",
     desc: "For businesses that post regularly",
-    oldPrice: 1499,
-    newPrice: 999,
+    oldPrice: 999,
+    newPrice: 799,
     features: [
       "20 social media posters / month",
       "Festival creatives",
