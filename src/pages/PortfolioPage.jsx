@@ -65,8 +65,8 @@ const PortfolioPage = () => {
 
       {/* ── BEFORE / AFTER SLIDER ── */}
       <BeforeAfterSlider
-        beforeSrc="/templates/blank-poster.png"
-        afterSrc="/templates/gym-offer.png"
+        beforeSrc="/templates/catering_before.png"
+        afterSrc="/templates/catering-service.png"
         beforeLabel="Blank template"
         afterLabel="After — PosterBabu"
       />
