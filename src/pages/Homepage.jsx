@@ -1,521 +1,288 @@
 import React from "react";
-import { MessageCircle, Zap, CheckCircle, Star, Store, Tag } from "lucide-react";
-
-/* ENTRY OFFERS */
+import { MessageCircle, Zap, CheckCircle, Star, Store, Tag, ArrowRight } from "lucide-react";
+import { FestivalCalendar, WhatsAppTestimonials } from "../NoDBFeatures";
 
 const ENTRY_OFFERS = [
-{
-name: "Fast Edit",
-oldPrice: 99,
-newPrice: 49,
-tagline: "Perfect for quick changes",
-features: [
-"Edit existing poster",
-"Text or offer update",
-"Delivered fast"
-],
-button: "Edit My Poster"
-},
-{
-name: "Custom Poster",
-oldPrice: 299,
-newPrice: 149,
-tagline: "Designed for your business",
-features: [
-"Custom poster design",
-"Instagram / WhatsApp size",
-"HD file delivery",
-"Delivered within an hour"
-],
-button: "Create My Poster",
-highlight: true
-}
-];
-
-const TESTIMONIALS = [
-{
-name: "Rahul",
-biz: "Gym Owner",
-text: "PosterBabu made my gym posters in 10 minutes. Amazing service.",
-rating: 5
-},
-{
-name: "Sushma",
-biz: "Salon Owner",
-text: "Just one WhatsApp message and I get beautiful designs instantly.",
-rating: 5
-},
-{
-name: "Amit",
-biz: "Cafe Owner",
-text: "Very affordable and fast. Perfect for small businesses.",
-rating: 5
-}
+  {
+    name: "Fast Edit",
+    oldPrice: 99,
+    newPrice: 49,
+    tagline: "Quick template edit",
+    features: ["Edit existing poster", "Text or offer update", "Delivered fast"],
+    button: "Edit My Poster",
+  },
+  {
+    name: "Custom Poster",
+    oldPrice: 299,
+    newPrice: 149,
+    tagline: "Built for your business",
+    features: ["Custom poster design", "Instagram / WhatsApp size", "HD file delivery", "Delivered within an hour"],
+    button: "Create My Poster",
+    highlight: true,
+  },
 ];
 
 const GALLERY = [
-"/templates/salon-opening.png",
-"/templates/salon-makeup.png",
-"/templates/gym-offer.png",
-"/templates/gym-membership.png",
-"/templates/catering-service.png",
-"/templates/sweets-menu.png",
-"/templates/kirana-sale.png",
-"/templates/coaching-admission.png"
+  "/templates/salon-opening.png",
+  "/templates/salon-makeup.png",
+  "/templates/gym-offer.png",
+  "/templates/gym-membership.png",
+  "/templates/catering-service.png",
+  "/templates/sweets-menu.png",
+  "/templates/kirana-sale.png",
+  "/templates/coaching-admission.png",
 ];
 
-/* WHATSAPP */
-
 const openWhatsApp = (context = "") => {
-
-const baseMessage = context
-? `Hi PosterBabu! I'm interested in: ${context}.\n\nBusiness Name:\nDetails:`
-: "Hi PosterBabu! I want to order a poster for my business.";
-
-window.open(
-`https://wa.me/917428091729?text=${encodeURIComponent(baseMessage)}`,
-"_blank"
-);
-
+  const msg = context
+    ? `Hi PosterBabu! I'm interested in: ${context}.\n\nBusiness Name:\nDetails:`
+    : "Hi PosterBabu! I want to order a poster for my business.";
+  window.open(`https://wa.me/917428091729?text=${encodeURIComponent(msg)}`, "_blank");
 };
 
-const Homepage = ({ navigate }) => {
-
-return (
-
-<div className="animate-in fade-in duration-500">
-
-{/* HERO */}
-
-<section className="pt-16 md:pt-28 pb-20 px-4">
-
-<div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
-
-{/* LEFT */}
-
-<div className="flex-1 text-center md:text-left">
-
-<div className="inline-flex items-center gap-2 bg-orange-50 text-orange-700 px-4 py-1.5 rounded-full text-xs font-black tracking-widest mb-8 uppercase">
-<Zap size={14}/>
-Fast Poster Design
-</div>
-
-<h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight text-slate-900">
-Create Professional
-<br/>
-<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
-Social Media Posters
-</span>
-<br/>
-in Minutes
-</h1>
-
-<p className="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
-Promotional posters and marketing creatives designed for small businesses and delivered instantly via WhatsApp.
-</p>
-
-<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-
-<button
-onClick={()=>openWhatsApp("Poster Order")}
-className="bg-green-600 hover:bg-green-700 text-white px-10 py-5 rounded-2xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95"
-
->
-
-<MessageCircle/>
-Order on WhatsApp
-</button>
-
-<button
-onClick={()=>navigate("pricing")}
-className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-10 py-5 rounded-2xl font-bold text-xl"
-
->
-
-View Pricing </button>
-
-</div>
-
-{/* TRUST */}
-
-<div className="flex flex-wrap gap-6 mt-8 text-sm text-slate-600 font-semibold">
-
-<div className="flex items-center gap-2">
-<Star size={16} className="text-orange-500" fill="currentColor"/>
-4.9 Rating
-</div>
-
-<div>
-100+ Posters Delivered
-</div>
-
-<div>
-⚡ Delivered in 10–30 minutes
-</div>
-
-</div>
-
-</div>
-
-{/* HERO IMAGE */}
-
-<div className="flex-1 relative hidden md:block">
-
-<div className="relative bg-white p-4 rounded-[3rem] shadow-2xl border border-slate-100 rotate-2 hover:rotate-0 transition-transform duration-500 overflow-hidden">
-
-<img
-src="/templates/navratari.png"
-alt="Poster Sample"
-className="rounded-[2.5rem] w-full h-[500px] object-cover"
-/>
-
-<div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-4/5 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-xl border border-slate-100">
-
-<p className="text-[10px] font-black text-orange-600 uppercase mb-1">
-Special Navratari Poster
-</p>
-
-<p className="font-bold text-slate-900 text-sm leading-tight">
-Shyam Manufacturers
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-{/* WHAT IS POSTERBABU */}
-
-<section className="py-20 bg-gradient-to-b from-white to-gray-50">
-
-<div className="max-w-6xl mx-auto px-6 text-center">
-
-<h2 className="text-4xl font-bold text-gray-900">
-What is PosterBabu?
-</h2>
-
-<div className="w-16 h-1 bg-orange-500 mx-auto mt-4 mb-6 rounded"></div>
-
-<p className="text-gray-600 max-w-2xl mx-auto text-lg">
-PosterBabu helps local businesses promote offers and services with professional marketing posters.
-</p>
-
-<div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-14">
-
-<div className="bg-white p-8 rounded-xl border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
-
-<div className="w-14 h-14 flex items-center justify-center bg-orange-100 text-orange-600 rounded-full mx-auto mb-5">
-<Store size={26}/>
-</div>
-
-<h3 className="text-xl font-semibold mb-3">
-Local Business Focus
-</h3>
-
-<p className="text-gray-600">
-Perfect for salons, gyms, cafes, shops and coaching centers.
-</p>
-
-</div>
-
-<div className="bg-white p-8 rounded-xl border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
-
-<div className="w-14 h-14 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-full mx-auto mb-5">
-<Zap size={26}/>
-</div>
-
-<h3 className="text-xl font-semibold mb-3">
-Fast Delivery
-</h3>
-
-<p className="text-gray-600">
-Send a request and receive ready-to-post designs in minutes.
-</p>
-
-</div>
-
-<div className="bg-white p-8 rounded-xl border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
-
-<div className="w-14 h-14 flex items-center justify-center bg-green-100 text-green-600 rounded-full mx-auto mb-5">
-<Tag size={26}/>
-</div>
-
-<h3 className="text-xl font-semibold mb-3">
-Affordable Marketing
-</h3>
-
-<p className="text-gray-600">
-Professional poster designs starting from ₹49.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-{/* GALLERY */}
-
-<section className="py-24 px-4 bg-slate-50">
-
-<div className="max-w-6xl mx-auto">
-
-<div className="text-center mb-16">
-
-<h2 className="text-4xl font-black mb-4">
-Poster Gallery
-</h2>
-
-<p className="text-slate-500">
-Examples created for real businesses
-</p>
-
-</div>
-
-<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-{GALLERY.map((img,i)=>(
-
-<div key={i} className="group rounded-2xl overflow-hidden shadow hover:shadow-xl transition">
-
-<img
-src={img}
-alt="Poster sample"
-className="w-full h-full object-cover group-hover:scale-105 group-hover:brightness-110 transition duration-500"
-/>
-
-</div>
-
-))}
-
-</div>
-
-</div>
-
-</section>
-
-{/* PRICING */}
-
-<section className="py-24 px-4 bg-slate-50">
-
-<div className="max-w-4xl mx-auto">
-
-<div className="text-center mb-16">
-
-<h2 className="text-4xl font-black mb-4">
-Try PosterBabu Today
-</h2>
-
-<p className="text-slate-500 italic">
-Affordable designs. No commitment required.
-</p>
-
-</div>
-
-<div className="grid md:grid-cols-2 gap-8">
-
-{ENTRY_OFFERS.map((offer,i)=>(
-
-<div
-key={i}
-className={`bg-white p-10 rounded-3xl border-2 flex flex-col ${
-offer.highlight
-? "border-orange-500 shadow-[0_10px_40px_rgba(249,115,22,0.25)]"
-: "border-slate-100"
-}`}
->
-
-<span className="text-xs font-black uppercase tracking-widest text-slate-400">
-{offer.tagline}
-</span>
-
-<h3 className="text-3xl font-black mt-2 mb-4">
-{offer.name}
-</h3>
-
-<div className="text-5xl font-black mb-6">
-₹{offer.newPrice}
-<span className="text-xl text-slate-400 line-through ml-2">
-₹{offer.oldPrice}
-</span>
-</div>
-
-<ul className="space-y-3 mb-8">
-
-{offer.features.map((f,j)=>(
-
-<li key={j} className="flex items-center gap-3 text-slate-600 font-bold">
-<CheckCircle size={18} className="text-green-500"/>
-{f}
-</li>
-))}
-
-</ul>
-
-<button
-onClick={()=>openWhatsApp(offer.name)}
-className={`py-4 rounded-xl font-black ${
-offer.highlight
-? "bg-orange-600 text-white"
-: "bg-slate-100"
-}`}
-
->
-
-{offer.button} </button>
-
-</div>
-
-))}
-
-</div>
-
-</div>
-
-</section>
-{/* HOW POSTERBABU WORKS */}
-
-<section className="py-24 px-4 bg-indigo-950 text-white text-center">
-
-<div className="max-w-4xl mx-auto">
-
-<h2 className="text-3xl font-black mb-16 uppercase tracking-widest">
-How PosterBabu Works
-</h2>
-
-<div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-
-{[
-{
-step: "01",
-title: "WhatsApp Request",
-desc: "Send your poster request directly on WhatsApp."
-},
-{
-step: "02",
-title: "We Design",
-desc: "Our designer creates your poster within minutes."
-},
-{
-step: "03",
-title: "Receive & Post",
-desc: "Receive ready-to-post designs instantly."
-}
-].map((s,i)=>(
-<div key={i} className="flex flex-col items-center">
-
-<div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-orange-500 font-black text-xl border border-white/20">
-{s.step}
-</div>
-
-<h3 className="font-bold text-xl mb-3">
-{s.title}
-</h3>
-
-<p className="text-indigo-200 text-sm leading-relaxed max-w-xs">
-{s.desc}
-</p>
-
-</div>
-))}
-
-</div>
-
-</div>
-
-</section>
-{/* TESTIMONIALS */}
-
-<section className="py-24 px-4">
-
-<div className="max-w-6xl mx-auto">
-
-<h2 className="text-3xl font-black text-center mb-16">
-What Our Clients Say
-</h2>
-
-<div className="grid md:grid-cols-3 gap-8">
-
-{TESTIMONIALS.map((t,i)=>(
-
-<div key={i} className="bg-slate-50 p-8 rounded-2xl">
-
-<div className="flex gap-1 text-orange-500 mb-4">
-{[...Array(t.rating)].map((_,j)=>(
-<Star key={j} size={14} fill="currentColor"/>
-))}
-</div>
-
-<p className="italic mb-6">
-"{t.text}"
-</p>
-
-<div className="font-bold">
-{t.name}
-</div>
-
-<div className="text-xs text-orange-600 font-bold uppercase">
-{t.biz}
-</div>
-
-</div>
-
-))}
-
-</div>
-
-</div>
-
-</section>
-
-{/* CTA */}
-
-<section className="py-24 px-6">
-
-<div className="max-w-5xl mx-auto bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-3xl shadow-2xl p-14 text-center">
-
-<h2 className="text-4xl md:text-5xl font-black mb-6">
-Ready to Promote Your Business?
-</h2>
-
-<p className="text-orange-100 text-lg mb-10 max-w-xl mx-auto">
-Get professional posters designed in minutes.
-</p>
-
-<button
-onClick={()=>navigate("order")}
-className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition shadow-lg"
-
->
-
-Order Now </button>
-
-</div>
-
-</section>
-
-{/* FLOATING WHATSAPP */}
-
-<button
-onClick={()=>openWhatsApp()}
-className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl z-50"
-
->
-
-<MessageCircle/>
-</button>
-
-</div>
-
+const Homepage = ({ navigate }) => (
+  <div style={{ background: "#060517", color: "#F5F0E8", fontFamily: "'DM Sans', sans-serif" }}>
+    <style>{`
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;900&display=swap');
+      *{box-sizing:border-box;}
+      .hp-fire-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(208,91,55,0.15);border:1px solid rgba(208,91,55,0.3);color:#E87A57;padding:6px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+      .hp-btn-fire{background:#D05B37;color:#F5F0E8;border:none;padding:16px 32px;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:10px;transition:background 0.2s,transform 0.15s;}
+      .hp-btn-fire:hover{background:#B84E2E;transform:translateY(-2px);}
+      .hp-btn-ghost{background:transparent;color:#F5F0E8;border:1.5px solid #2E2B45;padding:15px 32px;border-radius:14px;font-size:16px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:10px;transition:border-color 0.2s;}
+      .hp-btn-ghost:hover{border-color:#D05B37;}
+      .hp-card{background:#1A1830;border:1px solid #2E2B45;border-radius:20px;padding:28px;transition:border-color 0.2s,transform 0.2s;}
+      .hp-card:hover{border-color:rgba(208,91,55,0.5);transform:translateY(-4px);}
+      .hp-gallery-item{border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#1A1830;position:relative;transition:transform 0.4s,box-shadow 0.4s;}
+      .hp-gallery-item:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(208,91,55,0.2);}
+      .hp-gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+      .hp-price-card{background:#1A1830;border:1px solid #2E2B45;border-radius:24px;padding:36px;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.2s;}
+      .hp-price-card:hover{border-color:rgba(208,91,55,0.4);transform:translateY(-4px);}
+      .hp-price-card.hl{background:#D05B37;border-color:#D05B37;}
+      .hp-divline{width:40px;height:3px;background:#D05B37;border-radius:2px;margin:12px 0 20px;}
+      @keyframes hp-float{0%,100%{transform:translateY(0px) rotate(2deg);}50%{transform:translateY(-10px) rotate(2deg);}}
+      .hp-float{animation:hp-float 5s ease-in-out infinite;}
+      @keyframes hp-fadeup{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+      .hp-f1{animation:hp-fadeup 0.7s ease both;}
+      .hp-f2{animation:hp-fadeup 0.7s 0.15s ease both;}
+      .hp-f3{animation:hp-fadeup 0.7s 0.3s ease both;}
+      .hp-f4{animation:hp-fadeup 0.7s 0.45s ease both;}
+      @media(max-width:768px){.hp-hero-img{display:none!important;}.hp-hero-row{flex-direction:column!important;}.hp-stats-row{flex-wrap:wrap!important;}.hp-pricing-row{flex-direction:column!important;}.hp-steps-row{flex-direction:column!important;}.hp-gallery-grid{grid-template-columns:repeat(2,1fr)!important;}.hp-what-grid{grid-template-columns:1fr!important;}}
+    `}</style>
+
+    {/* ── HERO ── */}
+    <section style={{ padding: "80px max(24px,5vw) 100px", position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "absolute", top: "10%", right: "15%", width: 400, height: 400, background: "radial-gradient(circle,rgba(208,91,55,0.12) 0%,transparent 70%)", pointerEvents: "none" }} />
+      <div className="hp-hero-row" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 80 }}>
+
+        {/* Left */}
+        <div style={{ flex: 1 }}>
+          <div className="hp-fire-tag hp-f1"><Zap size={12} fill="currentColor" /> Fast Poster Design</div>
+          <h1 className="hp-f2" style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(36px,6vw,64px)", fontWeight: 900, lineHeight: 1.1, margin: "20px 0 20px", color: "#F5F0E8" }}>
+            Professional Posters<br />for Your Business,<br /><span style={{ color: "#D05B37" }}>Delivered Fast.</span>
+          </h1>
+          <p className="hp-f3" style={{ color: "#9895B0", fontSize: 18, lineHeight: 1.8, maxWidth: 480, marginBottom: 36 }}>
+            Marketing creatives for salons, gyms, cafes, kirana stores — delivered via WhatsApp in minutes.
+          </p>
+          <div className="hp-f4" style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <button className="hp-btn-fire" onClick={() => openWhatsApp("Poster Order")} style={{ fontSize: 17 }}>
+              <MessageCircle size={18} /> Order on WhatsApp
+            </button>
+            <button className="hp-btn-ghost" onClick={() => navigate("pricing")}>
+              View Pricing <ArrowRight size={16} />
+            </button>
+          </div>
+          <div className="hp-f4" style={{ display: "flex", gap: 24, marginTop: 28, flexWrap: "wrap" }}>
+            {["⚡ 10–30 min delivery", "★ 4.9 rating", "100+ posters done"].map(t => (
+              <span key={t} style={{ fontSize: 13, color: "#9895B0", fontWeight: 500 }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — hero image */}
+        <div className="hp-hero-img" style={{ flex: "0 0 360px", position: "relative" }}>
+          <div className="hp-float" style={{ background: "#1A1830", borderRadius: 32, border: "1px solid #2E2B45", overflow: "hidden", boxShadow: "0 40px 80px rgba(0,0,0,0.5)" }}>
+            <img src="/templates/navratari.png" alt="Poster sample" style={{ width: "100%", height: 460, objectFit: "cover", display: "block" }} />
+            <div style={{ position: "absolute", bottom: 20, left: 20, right: 20, background: "rgba(6,5,23,0.88)", backdropFilter: "blur(8px)", borderRadius: 14, padding: "12px 16px", border: "1px solid #2E2B45" }}>
+              <p style={{ fontSize: 10, fontWeight: 800, color: "#D05B37", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 4 }}>Navratri Special</p>
+              <p style={{ fontSize: 14, fontWeight: 700, color: "#F5F0E8" }}>Shyam Manufacturers</p>
+            </div>
+          </div>
+          <div style={{ position: "absolute", top: -16, right: -16, background: "#D05B37", borderRadius: 16, padding: "12px 18px", boxShadow: "0 12px 32px rgba(208,91,55,0.4)" }}>
+            <p style={{ fontSize: 11, fontWeight: 700, color: "rgba(245,240,232,0.7)", textTransform: "uppercase", letterSpacing: 1 }}>From</p>
+            <p style={{ fontSize: 26, fontWeight: 900, color: "#F5F0E8", fontFamily: "'Playfair Display',serif" }}>₹49</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ── STATS ── */}
+    <section style={{ padding: "0 max(24px,5vw) 80px" }}>
+      <div className="hp-stats-row" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 16 }}>
+        {[
+          { val: "347+", label: "Posters Delivered" },
+          { val: "18 min", label: "Avg. Delivery" },
+          { val: "4.9★", label: "Customer Rating" },
+          { val: "₹49", label: "Starting Price", green: true },
+        ].map(s => (
+          <div key={s.label} className="hp-card" style={{ flex: 1, minWidth: 100, textAlign: "center", padding: 20 }}>
+            <div style={{ fontSize: 26, fontWeight: 900, color: s.green ? "#22c55e" : "#D05B37", fontFamily: "'Playfair Display',serif", lineHeight: 1 }}>{s.val}</div>
+            <div style={{ fontSize: 11, color: "#9895B0", marginTop: 6, textTransform: "uppercase", letterSpacing: 1 }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* ── WHAT IS POSTERBABU ── */}
+    <section style={{ padding: "80px max(24px,5vw)", background: "#0C0A1E" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 560, marginBottom: 56 }}>
+          <span className="hp-fire-tag">What we do</span>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(28px,4vw,44px)", fontWeight: 900, marginTop: 20, marginBottom: 12 }}>
+            Marketing visuals for <span style={{ color: "#D05B37" }}>local India.</span>
+          </h2>
+          <div className="hp-divline" />
+          <p style={{ color: "#9895B0", fontSize: 17, lineHeight: 1.8 }}>
+            PosterBabu helps local businesses promote offers and services with professional marketing posters — without needing a designer or agency.
+          </p>
+        </div>
+        <div className="hp-what-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+          {[
+            { icon: <Store size={22} />, title: "Local business focus", desc: "Built for salons, gyms, cafes, kirana stores, coaching centres — not big corporates." },
+            { icon: <Zap size={22} />, title: "Fast delivery", desc: "Send a WhatsApp, get your poster back in 10–30 minutes. No back-and-forth." },
+            { icon: <Tag size={22} />, title: "Affordable pricing", desc: "Professional designs starting at ₹49. No hidden fees, no subscriptions required." },
+          ].map(c => (
+            <div key={c.title} className="hp-card">
+              <div style={{ width: 44, height: 44, background: "rgba(208,91,55,0.15)", border: "1px solid rgba(208,91,55,0.25)", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", color: "#D05B37", marginBottom: 18 }}>{c.icon}</div>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#F5F0E8", marginBottom: 10 }}>{c.title}</h3>
+              <p style={{ fontSize: 14, color: "#9895B0", lineHeight: 1.7 }}>{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ── GALLERY ── */}
+    <section style={{ padding: "80px max(24px,5vw)" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 48, flexWrap: "wrap", gap: 16 }}>
+          <div>
+            <span className="hp-fire-tag">Our work</span>
+            <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 900, marginTop: 16 }}>Poster Gallery</h2>
+            <div className="hp-divline" />
+          </div>
+          <button className="hp-btn-ghost" onClick={() => navigate("portfolio")}>View all <ArrowRight size={16} /></button>
+        </div>
+        <div className="hp-gallery-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
+          {GALLERY.map((img, i) => (
+            <div key={i} className="hp-gallery-item">
+              <img src={img} alt="Poster sample" />
+              <div style={{ position: "absolute", top: 10, right: 10, background: "#D05B37", borderRadius: 8, padding: "4px 10px", fontSize: 11, fontWeight: 800, color: "#F5F0E8" }}>🔥 ₹49</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ── FESTIVAL CALENDAR ── */}
+    <FestivalCalendar />
+
+    {/* ── PRICING ── */}
+    <section style={{ padding: "80px max(24px,5vw)" }}>
+      <div style={{ maxWidth: 860, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <span className="hp-fire-tag">Pricing</span>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(28px,4vw,44px)", fontWeight: 900, marginTop: 20, marginBottom: 10 }}>
+            Try PosterBabu <span style={{ color: "#D05B37" }}>today</span>
+          </h2>
+          <p style={{ color: "#9895B0", fontSize: 15 }}>No commitment. No contracts. Just great posters.</p>
+        </div>
+        <div className="hp-pricing-row" style={{ display: "flex", gap: 20 }}>
+          {ENTRY_OFFERS.map((offer, i) => (
+            <div key={i} className={`hp-price-card ${offer.highlight ? "hl" : ""}`} style={{ flex: 1 }}>
+              <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "1.5px", color: offer.highlight ? "rgba(245,240,232,0.6)" : "#9895B0" }}>{offer.tagline}</span>
+              <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, fontWeight: 900, color: "#F5F0E8", margin: "8px 0 16px" }}>{offer.name}</h3>
+              <div style={{ marginBottom: 24 }}>
+                <span style={{ fontFamily: "'Playfair Display',serif", fontSize: 48, fontWeight: 900, color: "#F5F0E8" }}>₹{offer.newPrice}</span>
+                <span style={{ fontSize: 18, color: offer.highlight ? "rgba(245,240,232,0.5)" : "#9895B0", textDecoration: "line-through", marginLeft: 10 }}>₹{offer.oldPrice}</span>
+              </div>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12, marginBottom: 28, flex: 1 }}>
+                {offer.features.map((f, j) => (
+                  <li key={j} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, fontWeight: 500, color: offer.highlight ? "#F5F0E8" : "#9895B0" }}>
+                    <CheckCircle size={16} style={{ color: offer.highlight ? "#F5F0E8" : "#D05B37", flexShrink: 0 }} />{f}
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => openWhatsApp(offer.name)}
+                style={{ width: "100%", padding: 16, borderRadius: 14, fontWeight: 800, fontSize: 15, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", background: offer.highlight ? "rgba(6,5,23,0.25)" : "#D05B37", color: "#F5F0E8", border: offer.highlight ? "1.5px solid rgba(245,240,232,0.3)" : "none", transition: "opacity 0.2s" }}
+                onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
+                onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+              >{offer.button}</button>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: 24 }}>
+          <button onClick={() => navigate("pricing")} style={{ background: "none", border: "none", color: "#D05B37", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}>
+            View all monthly plans →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    {/* ── HOW IT WORKS ── */}
+    <section style={{ padding: "80px max(24px,5vw)", background: "#0C0A1E" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+        <span className="hp-fire-tag">Simple process</span>
+        <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 900, margin: "20px 0 48px" }}>
+          How PosterBabu <span style={{ color: "#D05B37" }}>works</span>
+        </h2>
+        <div className="hp-steps-row" style={{ display: "flex", gap: 24 }}>
+          {[
+            { num: "01", title: "WhatsApp us", desc: "Send your business name, what you want on the poster, and any details." },
+            { num: "02", title: "We design", desc: "Our designer gets to work immediately and creates your poster in minutes." },
+            { num: "03", title: "Receive & post", desc: "Get the HD file on WhatsApp — ready to post on Instagram or print." },
+          ].map((s, i) => (
+            <div key={i} className="hp-card" style={{ flex: 1, textAlign: "center" }}>
+              <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(208,91,55,0.15)", border: "1px solid rgba(208,91,55,0.3)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D05B37", fontWeight: 900, fontSize: 16, fontFamily: "'Playfair Display',serif", margin: "0 auto 18px" }}>{s.num}</div>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#F5F0E8", marginBottom: 10 }}>{s.title}</h3>
+              <p style={{ fontSize: 14, color: "#9895B0", lineHeight: 1.7 }}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 40 }}>
+          <button className="hp-btn-fire" onClick={() => openWhatsApp()} style={{ fontSize: 17 }}>
+            <MessageCircle size={18} /> Start on WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    {/* ── TESTIMONIALS ── */}
+    <WhatsAppTestimonials />
+
+    {/* ── CTA BANNER ── */}
+    <section style={{ padding: "80px max(24px,5vw)" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ background: "#D05B37", borderRadius: 28, padding: "64px 56px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", top: -60, right: -60, width: 220, height: 220, borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: -80, left: -40, width: 280, height: 280, borderRadius: "50%", background: "rgba(6,5,23,0.12)", pointerEvents: "none" }} />
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(28px,5vw,48px)", fontWeight: 900, color: "#F5F0E8", marginBottom: 16, position: "relative" }}>
+            Ready to promote your business?
+          </h2>
+          <p style={{ fontSize: 18, color: "rgba(245,240,232,0.75)", marginBottom: 36, position: "relative" }}>Get your first poster in under 30 minutes.</p>
+          <button
+            onClick={() => navigate("order")}
+            style={{ background: "#060517", color: "#F5F0E8", border: "none", padding: "18px 40px", borderRadius: 14, fontSize: 17, fontWeight: 800, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", position: "relative", transition: "transform 0.2s" }}
+            onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
+            onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+          >
+            Order Now — Starting ₹49
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
 );
-
-};
 
 export default Homepage;
