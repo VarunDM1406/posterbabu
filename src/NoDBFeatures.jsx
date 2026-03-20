@@ -88,16 +88,14 @@ export function TrustBar() {
 //    Dates are hardcoded — update once a year.
 // ─────────────────────────────────────────────────────────────────────────────
 const FESTIVALS_2026 = [
-  { name: "Holi",           date: new Date("2026-03-29"), emoji: "🎨" },
-  { name: "Eid-ul-Fitr",   date: new Date("2026-03-31"), emoji: "🌙" },
-  { name: "Baisakhi",      date: new Date("2026-04-14"), emoji: "🌾" },
-  { name: "Eid-ul-Adha",   date: new Date("2026-06-17"), emoji: "🐑" },
-  { name: "Independence Day", date: new Date("2026-08-15"), emoji: "🇮🇳" },
-  { name: "Ganesh Chaturthi", date: new Date("2026-08-22"), emoji: "🐘" },
-  { name: "Navratri",      date: new Date("2026-10-09"), emoji: "🪔" },
-  { name: "Dussehra",      date: new Date("2026-10-19"), emoji: "🏹" },
-  { name: "Diwali",        date: new Date("2026-10-30"), emoji: "✨" },
-  { name: "Christmas",     date: new Date("2026-12-25"), emoji: "🎄" },
+  { name: "Baisakhi",         date: new Date("2026-04-14"), emoji: "🌾" },
+  { name: "Eid-ul-Adha",      date: new Date("2026-05-27"), emoji: "🐑" },
+  { name: "Independence Day", date: new Date("2026-08-15"), emoji: "🏛️" },
+  { name: "Ganesh Chaturthi", date: new Date("2026-09-14"), emoji: "🐘" },
+  { name: "Navratri",         date: new Date("2026-10-12"), emoji: "🪔" },
+  { name: "Dussehra",         date: new Date("2026-10-20"), emoji: "🏹" },
+  { name: "Diwali",           date: new Date("2026-11-08"), emoji: "✨" },
+  { name: "Christmas",        date: new Date("2026-12-25"), emoji: "🎄" },
 ];
 
 export function FestivalCalendar() {
