@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { MessageCircle, ArrowRight, ChevronLeft, ChevronRight, Globe } from "lucide-react";
+import { MessageCircle, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 // ── SHARED STYLES (inject once in your app's global CSS or _app.jsx) ──────────
 // Colors: Chilean Fire #D05B37 | Mystic Black #060517 | Ash #1A1830 | Smoke #2E2B45 | Mist #9895B0 | Cream #F5F0E8
@@ -50,50 +50,34 @@ export function TrustBar() {
   ];
 
   return (
-    <div style={{
-      background: "#0C0A1E",
-      borderBottom: "1px solid #2E2B45",
-      padding: "12px max(24px, 5vw)",
-    }}>
-      <div style={{
-        maxWidth: 1200,
-        margin: "0 auto",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        flexWrap: "wrap",
-        gap: 12,
-      }}>
+    <div style={{ background: "#0C0A1E", borderBottom: "1px solid #2E2B45", padding: "12px max(16px,4vw)" }}>
+      <style>{`
+        @keyframes pb-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+        .tb-row{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+        .tb-divider{width:1px;height:20px;background:#2E2B45;flex-shrink:0;}
+        .tb-stat{display:flex;align-items:center;gap:6px;white-space:nowrap;}
+        .tb-val{font-size:16px;font-weight:900;font-family:"Playfair Display",serif;letter-spacing:-0.5px;}
+        .tb-lbl{font-size:11px;color:#9895B0;text-transform:uppercase;letter-spacing:0.6px;}
+        @media(max-width:600px){
+          .tb-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 4px;}
+          .tb-divider{display:none;}
+          .tb-stat{flex-direction:column;align-items:center;gap:2px;text-align:center;}
+          .tb-lbl{font-size:9px;}
+          .tb-val{font-size:14px;}
+        }
+      `}</style>
+      <div className="tb-row">
         {stats.map((s, i) => (
           <React.Fragment key={s.label}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              {s.live && (
-                <span style={{
-                  width: 7, height: 7, borderRadius: "50%", background: "#22c55e",
-                  display: "inline-block",
-                  animation: "pb-pulse 1.4s ease-in-out infinite",
-                }} />
-              )}
-              <span style={{
-                fontSize: 18,
-                fontWeight: 900,
-                color: s.color,
-                fontFamily: "'Playfair Display', serif",
-                letterSpacing: "-0.5px",
-              }}>
-                {typeof s.value === "number" ? s.value : s.value}{s.suffix}
-              </span>
-              <span style={{ fontSize: 12, color: "#9895B0", textTransform: "uppercase", letterSpacing: "0.8px" }}>
-                {s.label}
-              </span>
+            <div className="tb-stat">
+              {s.live && <span style={{ width:6, height:6, borderRadius:"50%", background:"#22c55e", display:"inline-block", animation:"pb-pulse 1.4s ease-in-out infinite", flexShrink:0 }} />}
+              <span className="tb-val" style={{ color: s.color }}>{typeof s.value === "number" ? s.value : s.value}{s.suffix}</span>
+              <span className="tb-lbl">{s.label}</span>
             </div>
-            {i < stats.length - 1 && (
-              <div style={{ width: 1, height: 24, background: "#2E2B45" }} />
-            )}
+            {i < stats.length - 1 && <div className="tb-divider" />}
           </React.Fragment>
         ))}
       </div>
-      <style>{`@keyframes pb-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}`}</style>
     </div>
   );
 }
@@ -149,69 +133,49 @@ export function FestivalCalendar() {
           </p>
         </div>
 
+        <style>{`
+          .fc-card{display:flex;align-items:center;gap:16px;background:#1A1830;border-radius:16px;padding:14px 16px;transition:transform 0.2s;}
+          .fc-card:hover{transform:translateX(4px);}
+          .fc-info{flex:1;min-width:0;}
+          .fc-name{font-size:15px;font-weight:700;color:#F5F0E8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+          .fc-days{font-size:12px;margin-top:2px;}
+          .fc-actions{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+          .fc-badge{font-size:10px;font-weight:800;background:#D05B37;color:#F5F0E8;padding:3px 8px;border-radius:20px;text-transform:uppercase;white-space:nowrap;}
+          .fc-btn{padding:9px 14px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;font-family:"DM Sans",sans-serif;white-space:nowrap;}
+          @media(max-width:480px){
+            .fc-badge{display:none;}
+            .fc-btn{padding:8px 12px;font-size:11px;}
+            .fc-card{gap:10px;padding:12px 12px;}
+          }
+        `}</style>
         {/* Festival cards */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {upcoming.map((f) => {
             const isUrgent = f.daysLeft <= 14;
             const isToday  = f.daysLeft === 0;
             return (
-              <div key={f.name} style={{
-                display: "flex", alignItems: "center", gap: 20,
-                background: "#1A1830",
-                border: `1px solid ${isUrgent ? "rgba(208,91,55,0.5)" : "#2E2B45"}`,
-                borderRadius: 16, padding: "16px 20px",
-                transition: "transform 0.2s, border-color 0.2s",
-              }}
-                onMouseEnter={e => e.currentTarget.style.transform = "translateX(4px)"}
-                onMouseLeave={e => e.currentTarget.style.transform = ""}
-              >
-                {/* Emoji + date */}
-                <div style={{ fontSize: 28, lineHeight: 1, minWidth: 40, textAlign: "center" }}>{f.emoji}</div>
-                <div style={{ minWidth: 52 }}>
-                  <div style={{ fontSize: 22, fontWeight: 900, color: "#F5F0E8", fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>
-                    {f.date.getDate()}
-                  </div>
-                  <div style={{ fontSize: 11, color: "#9895B0", textTransform: "uppercase", letterSpacing: "0.8px" }}>
-                    {f.date.toLocaleString("en-IN", { month: "short" })}
-                  </div>
+              <div key={f.name} className="fc-card" style={{ border: `1px solid ${isUrgent ? "rgba(208,91,55,0.5)" : "#2E2B45"}` }}>
+                <div style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>{f.emoji}</div>
+                <div style={{ flexShrink: 0, minWidth: 40 }}>
+                  <div style={{ fontSize: 20, fontWeight: 900, color: "#F5F0E8", fontFamily: "'Playfair Display',serif", lineHeight: 1 }}>{f.date.getDate()}</div>
+                  <div style={{ fontSize: 10, color: "#9895B0", textTransform: "uppercase", letterSpacing: "0.6px" }}>{f.date.toLocaleString("en-IN", { month: "short" })}</div>
                 </div>
-
-                {/* Name + days */}
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: "#F5F0E8" }}>{f.name}</div>
-                  <div style={{ fontSize: 13, marginTop: 3, color: isUrgent ? "#E87A57" : "#9895B0" }}>
+                <div className="fc-info">
+                  <div className="fc-name">{f.name}</div>
+                  <div className="fc-days" style={{ color: isUrgent ? "#E87A57" : "#9895B0" }}>
                     {isToday ? "Today!" : `${f.daysLeft} days away${isUrgent ? " — order now!" : ""}`}
                   </div>
                 </div>
-
-                {/* Badge */}
-                {isUrgent && (
-                  <span style={{
-                    fontSize: 10, fontWeight: 800, background: "#D05B37", color: "#F5F0E8",
-                    padding: "4px 10px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.8px",
-                  }}>
-                    {isToday ? "Today!" : "Urgent"}
-                  </span>
-                )}
-
-                {/* Order button */}
-                <button
-                  onClick={() => openWhatsApp(`Hi PosterBabu! I want a ${f.name} poster for my business.`)}
-                  style={{
-                    background: isUrgent ? "#D05B37" : "transparent",
-                    color: "#F5F0E8",
-                    border: isUrgent ? "none" : "1px solid #2E2B45",
-                    padding: "10px 18px", borderRadius: 10,
-                    fontSize: 13, fontWeight: 700, cursor: "pointer",
-                    fontFamily: "'DM Sans', sans-serif",
-                    whiteSpace: "nowrap",
-                    transition: "background 0.2s",
-                  }}
-                  onMouseEnter={e => !isUrgent && (e.currentTarget.style.borderColor = "#D05B37")}
-                  onMouseLeave={e => !isUrgent && (e.currentTarget.style.borderColor = "#2E2B45")}
-                >
-                  Order poster
-                </button>
+                <div className="fc-actions">
+                  {isUrgent && <span className="fc-badge">{isToday ? "Today!" : "Urgent"}</span>}
+                  <button
+                    className="fc-btn"
+                    onClick={() => openWhatsApp(`Hi PosterBabu! I want a ${f.name} poster for my business.`)}
+                    style={{ background: isUrgent ? "#D05B37" : "transparent", color: "#F5F0E8", border: isUrgent ? "none" : "1px solid #2E2B45" }}
+                  >
+                    Order poster
+                  </button>
+                </div>
               </div>
             );
           })}
@@ -395,93 +359,8 @@ export function DeliveryTimer({ startedAt }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 5. HINDI LANGUAGE TOGGLE
-//    Wrap your page in <LanguageProvider> and use useLanguage() hook.
-//    Then replace hardcoded strings with t("key").
-// ─────────────────────────────────────────────────────────────────────────────
-
-const TRANSLATIONS = {
-  en: {
-    heroHeading:   "Professional Posters for Your Business,",
-    heroHighlight: "Delivered Fast.",
-    heroSubtitle:  "Marketing creatives for salons, gyms, cafes, kirana stores — delivered via WhatsApp in minutes.",
-    orderBtn:      "Order on WhatsApp",
-    viewPricing:   "View Pricing",
-    deliveredStat: "Posters Delivered",
-    avgDelivery:   "Avg. Delivery",
-    rating:        "Customer Rating",
-    startingPrice: "Starting Price",
-    ordersToday:   "Orders Today",
-    portfolioTitle:"Poster Gallery",
-    portfolioSub:  "Examples created for real businesses",
-    pricingTitle:  "Try PosterBabu today",
-    pricingSub:    "No commitment. No contracts. Just great posters.",
-    ctaHeading:    "Ready to promote your business?",
-    ctaSub:        "Get your first poster in under 30 minutes.",
-    ctaBtn:        "Order Now — Starting ₹49",
-  },
-  hi: {
-    heroHeading:   "अपने बिज़नेस के लिए प्रोफेशनल पोस्टर,",
-    heroHighlight: "तुरंत डिलीवर।",
-    heroSubtitle:  "सैलून, जिम, कैफे, किराना स्टोर — WhatsApp पर मिनटों में पोस्टर पाएं।",
-    orderBtn:      "WhatsApp पर ऑर्डर करें",
-    viewPricing:   "प्राइसिंग देखें",
-    deliveredStat: "पोस्टर डिलीवर",
-    avgDelivery:   "औसत डिलीवरी",
-    rating:        "ग्राहक रेटिंग",
-    startingPrice: "शुरुआती कीमत",
-    ordersToday:   "आज के ऑर्डर",
-    portfolioTitle:"पोस्टर गैलरी",
-    portfolioSub:  "असली बिज़नेस के लिए बनाए गए पोस्टर",
-    pricingTitle:  "PosterBabu आज़माएं",
-    pricingSub:    "कोई कमिटमेंट नहीं। सिर्फ बेहतरीन पोस्टर।",
-    ctaHeading:    "अपने बिज़नेस को प्रमोट करने के लिए तैयार हैं?",
-    ctaSub:        "30 मिनट में पहला पोस्टर पाएं।",
-    ctaBtn:        "अभी ऑर्डर करें — सिर्फ ₹49 से",
-  },
-};
-
-const LanguageContext = React.createContext({ lang: "en", setLang: () => {}, t: (k) => k });
-
-export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState("en");
-  const t = (key) => TRANSLATIONS[lang][key] || TRANSLATIONS["en"][key] || key;
-  return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-}
-
-export function useLanguage() {
-  return React.useContext(LanguageContext);
-}
-
-// The toggle button itself — place in Navbar
-export function LangToggle() {
-  const { lang, setLang } = useLanguage();
-  const isHindi = lang === "hi";
-
-  return (
-    <button
-      onClick={() => setLang(isHindi ? "en" : "hi")}
-      style={{
-        display: "flex", alignItems: "center", gap: 8,
-        background: "rgba(208,91,55,0.12)", border: "1px solid rgba(208,91,55,0.3)",
-        borderRadius: 100, padding: "6px 14px",
-        color: "#E87A57", fontSize: 13, fontWeight: 700,
-        cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
-        transition: "background 0.2s",
-      }}
-      onMouseEnter={e => e.currentTarget.style.background = "rgba(208,91,55,0.22)"}
-      onMouseLeave={e => e.currentTarget.style.background = "rgba(208,91,55,0.12)"}
-    >
-      <Globe size={14} />
-      {isHindi ? "English" : "हिंदी"}
-    </button>
-  );
-}
+// Simple no-op LanguageProvider (Hindi toggle removed but kept for compatibility)
+export function LanguageProvider({ children }) { return children; }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 6. WHATSAPP SCREENSHOT TESTIMONIALS

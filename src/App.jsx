@@ -10,7 +10,7 @@ import ContactPage   from "./pages/ContactPage";
 import TrackOrderPage from "./pages/TrackOrderPage";
 import AdminPage     from "./pages/AdminPage";
 
-import { TrustBar, LanguageProvider, LangToggle } from "./NoDBFeatures";
+import { TrustBar, LanguageProvider } from "./NoDBFeatures";
 
 // Read URL params to handle /track?id=XX and /admin routes
 const getInitialPage = () => {
@@ -102,7 +102,6 @@ function App() {
                   {link.label}
                 </button>
               ))}
-              <LangToggle />
               <button className="app-order-btn" onClick={() => navigate("order")}>Order Now</button>
             </div>
 
@@ -129,8 +128,7 @@ function App() {
                 </button>
               ))}
               <div style={{ padding: "12px 20px 4px", display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <LangToggle />
-                <button className="app-order-btn" onClick={() => navigate("order")} style={{ flex: 1 }}>
+                  <button className="app-order-btn" onClick={() => navigate("order")} style={{ flex: 1 }}>
                   Order Now
                 </button>
               </div>
