@@ -35,7 +35,7 @@ export const LangToggle = () => {
       onMouseEnter={e => e.currentTarget.style.background = "rgba(208,91,55,0.22)"}
       onMouseLeave={e => e.currentTarget.style.background = "rgba(208,91,55,0.12)"}
     >
-      {lang === "en" ? "🇮🇳 हिंदी" : "🇬🇧 English"}
+      {lang === "en" ? "हिंदी" : "English"}
     </button>
   );
 };
