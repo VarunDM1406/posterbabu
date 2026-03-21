@@ -111,6 +111,7 @@ function AppInner() {
             </div>
 
             {/* Mobile hamburger */}
+            <LangToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               style={{ background: "rgba(208,91,55,0.12)", border: "1px solid rgba(208,91,55,0.2)", borderRadius: 10, padding: 8, cursor: "pointer", color: "#D05B37", display: "none" }}
