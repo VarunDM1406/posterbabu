@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { BeforeAfterSlider } from "../NoDBFeatures";
+import { useLanguage } from "../LanguageContext";
 
 const PORTFOLIO_ITEMS = [
   { id: 1,  cat: "Salon",    title: "Glow Salon Opening",         img: "/templates/salon-opening.png" },
@@ -23,12 +24,11 @@ const PORTFOLIO_ITEMS = [
 const CATEGORIES = ["All", "Salon", "Gym", "Cafe", "Retail", "Coaching", "Festival"];
 
 const PortfolioPage = () => {
+  const { t } = useLanguage();
   const [filter, setFilter]   = useState("All");
   const [preview, setPreview] = useState(null);
 
-  const filtered = filter === "All"
-    ? PORTFOLIO_ITEMS
-    : PORTFOLIO_ITEMS.filter(i => i.cat === filter);
+  const filtered = filter === "All" ? PORTFOLIO_ITEMS : PORTFOLIO_ITEMS.filter(i => i.cat === filter);
 
   return (
     <div style={{ background: "#060517", color: "#F5F0E8", fontFamily: "'DM Sans',sans-serif", minHeight: "100vh" }}>
@@ -46,24 +46,20 @@ const PortfolioPage = () => {
         @media(max-width:768px){.pp-grid{grid-template-columns:repeat(2,1fr)!important;}}
       `}</style>
 
-      {/* ── HERO ── */}
       <section style={{ padding: "72px max(24px,5vw) 56px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <span className="pp-fire-tag">Our portfolio</span>
+          <span className="pp-fire-tag">{t("portTag")}</span>
           <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(32px,5vw,56px)", fontWeight: 900, margin: "18px 0 14px" }}>
-            Real posters for <span style={{ color: "#D05B37" }}>real businesses</span>
+            {t("portTitle")} <span style={{ color: "#D05B37" }}>{t("portTitleHL")}</span>
           </h1>
           <div style={{ width: 40, height: 3, background: "#D05B37", borderRadius: 2, marginBottom: 20 }} />
-          <p style={{ color: "#9895B0", fontSize: 17, lineHeight: 1.8, maxWidth: 520 }}>
-            Every poster below was made for an actual local business. Browse and pick a style — we'll customise it for yours.
-          </p>
+          <p style={{ color: "#9895B0", fontSize: 17, lineHeight: 1.8, maxWidth: 520 }}>{t("portSub")}</p>
           <div style={{ marginTop: 16 }}>
-            <span style={{ fontSize: 14, fontWeight: 700, color: "#D05B37" }}>🔥 All templates customised for just ₹49</span>
+            <span style={{ fontSize: 14, fontWeight: 700, color: "#D05B37" }}>{t("portPriceNote")}</span>
           </div>
         </div>
       </section>
 
-      {/* ── BEFORE / AFTER SLIDER ── */}
       <BeforeAfterSlider
         beforeSrc="/templates/catering_before.png"
         afterSrc="/templates/catering-service.png"
@@ -71,34 +67,20 @@ const PortfolioPage = () => {
         afterLabel="After — PosterBabu"
       />
 
-      {/* ── FILTER + GRID ── */}
       <section style={{ padding: "0 max(24px,5vw) 80px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-
-          {/* Filter pills */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 40, justifyContent: "center" }}>
             {CATEGORIES.map(c => (
-              <button
-                key={c}
-                className={`pp-filter-btn ${filter === c ? "active" : ""}`}
-                onClick={() => setFilter(c)}
-              >{c}</button>
+              <button key={c} className={`pp-filter-btn ${filter === c ? "active" : ""}`} onClick={() => setFilter(c)}>{c}</button>
             ))}
           </div>
-
-          {/* Grid */}
           <div className="pp-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
             {filtered.map(item => (
               <div key={item.id} className="pp-grid-item" onClick={() => setPreview(item)}>
-                {/* Price badge */}
-                <div style={{ position: "absolute", top: 18, right: 18, background: "#D05B37", borderRadius: 8, padding: "4px 10px", fontSize: 11, fontWeight: 800, color: "#F5F0E8", zIndex: 2 }}>
-                  🔥 ₹49
-                </div>
-                {/* Image */}
+                <div style={{ position: "absolute", top: 18, right: 18, background: "#D05B37", borderRadius: 8, padding: "4px 10px", fontSize: 11, fontWeight: 800, color: "#F5F0E8", zIndex: 2 }}>🔥 ₹49</div>
                 <div style={{ aspectRatio: "3/4", borderRadius: 12, overflow: "hidden", marginBottom: 12, background: "#0C0A1E" }}>
                   <img src={item.img} alt={item.title} />
                 </div>
-                {/* Meta */}
                 <div style={{ padding: "0 4px 4px" }}>
                   <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "1px", color: "#D05B37", display: "block", marginBottom: 4 }}>{item.cat}</span>
                   <div style={{ fontSize: 13, fontWeight: 700, color: "#F5F0E8", lineHeight: 1.4 }}>{item.title}</div>
@@ -109,37 +91,24 @@ const PortfolioPage = () => {
         </div>
       </section>
 
-      {/* ── PREVIEW MODAL ── */}
       {preview && (
-        <div
-          style={{ position: "fixed", inset: 0, background: "rgba(6,5,23,0.85)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, zIndex: 999, backdropFilter: "blur(6px)" }}
-          onClick={() => setPreview(null)}
-        >
-          <div
-            style={{ background: "#1A1830", border: "1px solid #2E2B45", borderRadius: 24, padding: 28, maxWidth: 420, width: "100%", textAlign: "center" }}
-            onClick={e => e.stopPropagation()}
-          >
+        <div style={{ position: "fixed", inset: 0, background: "rgba(6,5,23,0.85)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, zIndex: 999, backdropFilter: "blur(6px)" }} onClick={() => setPreview(null)}>
+          <div style={{ background: "#1A1830", border: "1px solid #2E2B45", borderRadius: 24, padding: 28, maxWidth: 420, width: "100%", textAlign: "center" }} onClick={e => e.stopPropagation()}>
             <img src={preview.img} alt={preview.title} style={{ width: "100%", borderRadius: 16, marginBottom: 20, display: "block" }} />
             <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "1px", color: "#D05B37" }}>{preview.cat}</span>
             <h3 style={{ fontSize: 20, fontWeight: 700, color: "#F5F0E8", margin: "8px 0 20px" }}>{preview.title}</h3>
             <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
-              <button
-                onClick={() => window.open(`https://wa.me/917428091729?text=${encodeURIComponent(`Hello PosterBabu! I want a poster like "${preview.title}"`)}`)}
-                style={{ background: "#22c55e", color: "#F5F0E8", border: "none", padding: "12px 24px", borderRadius: 12, fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", display: "flex", alignItems: "center", gap: 8 }}
-              >
-                <MessageCircle size={16} /> Order this poster
+              <button onClick={() => window.open(`https://wa.me/917428091729?text=${encodeURIComponent(`Hello PosterBabu! I want a poster like "${preview.title}"`)}`)}
+                style={{ background: "#22c55e", color: "#F5F0E8", border: "none", padding: "12px 24px", borderRadius: 12, fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", display: "flex", alignItems: "center", gap: 8 }}>
+                <MessageCircle size={16} /> {t("portOrderBtn")}
               </button>
-              <button
-                onClick={() => setPreview(null)}
-                style={{ background: "transparent", color: "#9895B0", border: "1px solid #2E2B45", padding: "12px 24px", borderRadius: 12, fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}
-              >
-                Close
+              <button onClick={() => setPreview(null)} style={{ background: "transparent", color: "#9895B0", border: "1px solid #2E2B45", padding: "12px 24px", borderRadius: 12, fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}>
+                {t("portClose")}
               </button>
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 };

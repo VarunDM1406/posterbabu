@@ -11,7 +11,8 @@ import TrackOrderPage  from "./pages/TrackOrderPage";
 import AdminPage      from "./pages/AdminPage";
 import DashboardPage  from "./pages/DashboardPage";
 
-import { TrustBar, LanguageProvider } from "./NoDBFeatures";
+import { TrustBar } from "./NoDBFeatures";
+import { LanguageProvider, LangToggle, useLanguage } from "./LanguageContext";
 
 // Read URL params to handle /track?id=XX and /admin routes
 const getInitialPage = () => {
@@ -22,7 +23,8 @@ const getInitialPage = () => {
   return "home";
 };
 
-function App() {
+function AppInner() {
+  const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState(getInitialPage);
   const [isMenuOpen, setIsMenuOpen]   = useState(false);
 
@@ -49,16 +51,15 @@ function App() {
   };
 
   const navLinks = [
-    { id: "home",      label: "Home" },
-    { id: "services",  label: "Services" },
-    { id: "portfolio", label: "Portfolio" },
-    { id: "pricing",   label: "Pricing" },
-    { id: "order",     label: "Order" },
-    { id: "contact",   label: "Contact" },
+    { id: "home",      label: t("navHome") },
+    { id: "services",  label: t("navServices") },
+    { id: "portfolio", label: t("navPortfolio") },
+    { id: "pricing",   label: t("navPricing") },
+    { id: "order",     label: t("navOrder") },
+    { id: "contact",   label: t("navContact") },
   ];
 
   return (
-    <LanguageProvider>
       <div style={{ background: "#060517", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;900&display=swap');
@@ -105,7 +106,8 @@ function App() {
                   {link.label}
                 </button>
               ))}
-              <button className="app-order-btn" onClick={() => navigate("order")}>Order Now</button>
+              <LangToggle />
+              <button className="app-order-btn" onClick={() => navigate("order")}>{t("navOrderBtn")}</button>
             </div>
 
             {/* Mobile hamburger */}
@@ -131,8 +133,9 @@ function App() {
                 </button>
               ))}
               <div style={{ padding: "12px 20px 4px", display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button className="app-order-btn" onClick={() => navigate("order")} style={{ flex: 1 }}>
-                  Order Now
+                <LangToggle />
+                <button className="app-order-btn" onClick={() => navigate("order")} style={{ flex: 1 }}>
+                  {t("navOrderBtn")}
                 </button>
               </div>
             </div>
@@ -168,7 +171,7 @@ function App() {
                   </span>
                 </div>
                 <p style={{ color: "#9895B0", fontSize: 14, lineHeight: 1.7 }}>
-                  Fast, affordable poster design for local businesses across India. Starting at ₹49.
+                  {t("footerTagline")}
                 </p>
                 <div style={{ display: "flex", gap: 12, marginTop: 18 }}>
                   <a href="https://www.instagram.com/posterbabu_official/" target="_blank" rel="noopener noreferrer"
@@ -191,7 +194,7 @@ function App() {
               {/* Links */}
               <div style={{ display: "flex", gap: 60, flexWrap: "wrap" }}>
                 <div>
-                  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "1.5px", color: "#9895B0", marginBottom: 16 }}>Pages</p>
+                  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "1.5px", color: "#9895B0", marginBottom: 16 }}>{t("footerPages")}</p>
                   {navLinks.map(link => (
                     <button key={link.id} onClick={() => navigate(link.id)}
                       style={{ display: "block", background: "none", border: "none", color: "#9895B0", fontSize: 14, fontWeight: 500, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", padding: "5px 0", transition: "color 0.2s" }}
@@ -203,7 +206,7 @@ function App() {
                   ))}
                 </div>
                 <div>
-                  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "1.5px", color: "#9895B0", marginBottom: 16 }}>Contact</p>
+                  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "1.5px", color: "#9895B0", marginBottom: 16 }}>{t("footerContact")}</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     <a href="mailto:help.posterbabu@gmail.com" style={{ display: "flex", alignItems: "center", gap: 8, color: "#9895B0", fontSize: 14, textDecoration: "none" }}>
                       <Mail size={13} /> help.posterbabu@gmail.com
@@ -221,8 +224,8 @@ function App() {
 
             {/* Bottom bar */}
             <div style={{ borderTop: "1px solid #2E2B45", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-              <p style={{ fontSize: 13, color: "#9895B0" }}>© {new Date().getFullYear()} PosterBabu. All rights reserved.</p>
-              <p style={{ fontSize: 13, color: "#9895B0" }}>Made with ❤️ for local businesses in India</p>
+              <p style={{ fontSize: 13, color: "#9895B0" }}>© {new Date().getFullYear()} PosterBabu. {t("footerRights")}</p>
+              <p style={{ fontSize: 13, color: "#9895B0" }}>{t("footerMade")}</p>
             </div>
           </div>
         </footer>
@@ -240,6 +243,13 @@ function App() {
         )}
 
       </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppInner />
     </LanguageProvider>
   );
 }
