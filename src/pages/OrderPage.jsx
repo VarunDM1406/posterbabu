@@ -5,7 +5,7 @@ import { useLanguage } from "../LanguageContext";
 
 const OrderPage = () => {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({ name: "", business: "", type: "Fast Edit (₹49)", details: "" });
+  const [formData, setFormData] = useState({ name: "", business: "", type: "Fast Edit (₹99)", details: "" });
   const [orderTime, setOrderTime] = useState(null);
 
   const handleSubmit = (e) => {
@@ -53,7 +53,7 @@ const OrderPage = () => {
               <label className="op-label">{t("orderType")} — {t("orderTypeSub")}</label>
               <div className="op-select-wrap">
                 <select className="op-input" value={formData.type} onChange={e => setFormData({ ...formData, type: e.target.value })} style={{ paddingRight: 40 }}>
-                  <option>Fast Edit (₹49)</option>
+                  <option>Fast Edit (₹99)</option>
                   <option>Custom Design (₹149)</option>
                   <option>Starter - Special Discount (₹399)</option>
                   <option>Growth - Special Discount (₹799)</option>

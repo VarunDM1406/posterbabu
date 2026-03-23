@@ -81,7 +81,7 @@ const TRANSLATIONS = {
     howCta: "Start on WhatsApp",
     ctaTitle: "Ready to promote your business?",
     ctaSub: "Get your first poster in under 30 minutes.",
-    ctaBtn: "Order Now — Starting ₹49",
+    ctaBtn: "Order Now — Starting ₹99",
 
     // OFFER CARDS
     offer1Tagline: "Quick template edit",
@@ -130,14 +130,14 @@ const TRANSLATIONS = {
     svcWhoTitleHL: "local India",
     svcCtaTitle: "Ready to get your first poster?",
     svcCtaSub: "WhatsApp us now — delivered in under 30 minutes.",
-    svcCtaBtn: "Order Now — ₹49",
+    svcCtaBtn: "Order Now — ₹99",
 
     // PORTFOLIO PAGE
     portTag: "Our portfolio",
     portTitle: "Real posters for",
     portTitleHL: "real businesses",
     portSub: "Every poster below was made for an actual local business. Browse and pick a style — we'll customise it for yours.",
-    portPriceNote: "🔥 All templates customised for just ₹49",
+    portPriceNote: "🔥 All templates customised for just ₹99",
     portOrderBtn: "Order this poster",
     portClose: "Close",
 
@@ -153,8 +153,8 @@ const TRANSLATIONS = {
     priceMonthlySub: "For businesses that post regularly",
     priceFaqTitle: "Frequently asked questions",
     priceCtaTitle: "Still not sure?",
-    priceCtaSub: "Try a ₹49 Fast Edit first — no risk, no commitment.",
-    priceCtaBtn: "Try for ₹49",
+    priceCtaSub: "Try a ₹99 Fast Edit first — no risk, no commitment.",
+    priceCtaBtn: "Try for ₹99",
     pricePerMonth: "/month",
     pricePostersMonth: "posters / month",
     priceFestival: "Festival creatives",
@@ -173,7 +173,7 @@ const TRANSLATIONS = {
     orderBusiness: "Business name",
     orderBusinessPH: "e.g. Sharma Kirana Store",
     orderType: "Service type",
-    orderTypeSub: "For Fast Edit (₹49), pick a design from the Portfolio and we'll customise it for you",
+    orderTypeSub: "For Fast Edit (₹99), pick a design from the Portfolio and we'll customise it for you",
     orderDetails: "Poster details — the more you tell us, the better the design 😎",
     orderDetailsPH: "What do you want on the poster? Include your offer, phone number, address, etc.",
     orderBtn: "Send to WhatsApp",
@@ -205,7 +205,7 @@ const TRANSLATIONS = {
     contactUrgent: "Need something urgent outside hours? WhatsApp us — we try our best to respond.",
 
     // FOOTER
-    footerTagline: "Fast, affordable poster design for local businesses across India. Starting at ₹49.",
+    footerTagline: "Fast, affordable poster design for local businesses across India. Starting at ₹99.",
     footerPages: "Pages",
     footerContact: "Contact",
     footerRights: "All rights reserved.",
@@ -252,7 +252,7 @@ const TRANSLATIONS = {
     howCta: "WhatsApp पर शुरू करें",
     ctaTitle: "अपने बिज़नेस को प्रमोट करने के लिए तैयार हैं?",
     ctaSub: "30 मिनट से कम में पहला पोस्टर पाएं।",
-    ctaBtn: "अभी ऑर्डर करें — सिर्फ ₹49 से",
+    ctaBtn: "अभी ऑर्डर करें — सिर्फ ₹99 से",
 
     // OFFER CARDS
     offer1Tagline: "झटपट टेम्पलेट एडिट",
@@ -301,14 +301,14 @@ const TRANSLATIONS = {
     svcWhoTitleHL: "लोकल इंडिया के लिए",
     svcCtaTitle: "पहला पोस्टर पाने के लिए तैयार हैं?",
     svcCtaSub: "अभी WhatsApp करें — 30 मिनट में डिलीवरी।",
-    svcCtaBtn: "अभी ऑर्डर करें — ₹49",
+    svcCtaBtn: "अभी ऑर्डर करें — ₹99",
 
     // PORTFOLIO PAGE
     portTag: "हमारा पोर्टफोलियो",
     portTitle: "असली बिज़नेस के लिए",
     portTitleHL: "असली पोस्टर",
     portSub: "नीचे हर पोस्टर किसी असली लोकल बिज़नेस के लिए बनाया गया है। स्टाइल चुनें — हम आपके लिए कस्टमाइज़ करेंगे।",
-    portPriceNote: "🔥 सभी टेम्पलेट सिर्फ ₹49 में कस्टमाइज़",
+    portPriceNote: "🔥 सभी टेम्पलेट सिर्फ ₹99 में कस्टमाइज़",
     portOrderBtn: "यह पोस्टर ऑर्डर करें",
     portClose: "बंद करें",
 
@@ -324,8 +324,8 @@ const TRANSLATIONS = {
     priceMonthlySub: "उन बिज़नेस के लिए जो नियमित पोस्ट करते हैं",
     priceFaqTitle: "अक्सर पूछे जाने वाले सवाल",
     priceCtaTitle: "अभी भी सोच रहे हैं?",
-    priceCtaSub: "पहले ₹49 का फास्ट एडिट आज़माएं — कोई रिस्क नहीं।",
-    priceCtaBtn: "₹49 में आज़माएं",
+    priceCtaSub: "पहले ₹99 का फास्ट एडिट आज़माएं — कोई रिस्क नहीं।",
+    priceCtaBtn: "₹99 में आज़माएं",
     pricePerMonth: "/महीना",
     pricePostersMonth: "पोस्टर / महीना",
     priceFestival: "फेस्टिवल क्रिएटिव",
@@ -344,7 +344,7 @@ const TRANSLATIONS = {
     orderBusiness: "बिज़नेस का नाम",
     orderBusinessPH: "जैसे: शर्मा किराना स्टोर",
     orderType: "सर्विस टाइप",
-    orderTypeSub: "फास्ट एडिट (₹49) के लिए पोर्टफोलियो से डिज़ाइन चुनें और हम कस्टमाइज़ करेंगे",
+    orderTypeSub: "फास्ट एडिट (₹99) के लिए पोर्टफोलियो से डिज़ाइन चुनें और हम कस्टमाइज़ करेंगे",
     orderDetails: "पोस्टर की डिटेल्स — जितना बताएंगे, डिज़ाइन उतना बेहतर होगा 😎",
     orderDetailsPH: "पोस्टर में क्या चाहिए? ऑफर, फोन नंबर, पता आदि बताएं।",
     orderBtn: "WhatsApp पर भेजें",
@@ -376,7 +376,7 @@ const TRANSLATIONS = {
     contactUrgent: "काम के घंटों के बाहर कुछ ज़रूरी है? WhatsApp करें — हम कोशिश करते हैं।",
 
     // FOOTER
-    footerTagline: "भारत के लोकल बिज़नेस के लिए किफायती पोस्टर डिज़ाइन। सिर्फ ₹49 से शुरू।",
+    footerTagline: "भारत के लोकल बिज़नेस के लिए किफायती पोस्टर डिज़ाइन। सिर्फ ₹99 से शुरू।",
     footerPages: "पेज",
     footerContact: "संपर्क",
     footerRights: "सभी अधिकार सुरक्षित।",

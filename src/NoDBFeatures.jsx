@@ -46,7 +46,7 @@ export function TrustBar() {
     { value: "18", suffix: " min", label: "Avg. delivery", live: false, color: "#D05B37" },
     { value: totalPosters, suffix: "+", label: "Posters delivered", live: false, color: "#D05B37" },
     { value: "4.9", suffix: "★", label: "Customer rating", live: false, color: "#D05B37" },
-    { value: "₹49", suffix: "", label: "Starting price", live: false, color: "#22c55e" },
+    { value: "₹99", suffix: "", label: "Starting price", live: false, color: "#22c55e" },
   ];
 
   return (
@@ -488,27 +488,3 @@ export function WhatsAppTestimonials() {
     </section>
   );
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// USAGE GUIDE
-// ─────────────────────────────────────────────────────────────────────────────
-//
-// In your App.jsx or main layout:
-//
-// import {
-//   TrustBar, FestivalCalendar, BeforeAfterSlider,
-//   DeliveryTimer, LanguageProvider, LangToggle, useLanguage,
-//   WhatsAppTestimonials
-// } from "./NoDBFeatures";
-//
-// 1. Wrap app in <LanguageProvider> for Hindi toggle to work
-// 2. Add <TrustBar /> just below your <Navbar />
-// 3. Add <FestivalCalendar /> after the gallery on Homepage
-// 4. Add <BeforeAfterSlider /> on Portfolio page
-// 5. Add <DeliveryTimer startedAt={Date.now()} /> on OrderPage after submit
-// 6. Replace old testimonials section with <WhatsAppTestimonials />
-// 7. Add <LangToggle /> inside your Navbar component
-//
-// To use translations in any component:
-// const { t } = useLanguage();
-// <h1>{t("heroHeading")}</h1>

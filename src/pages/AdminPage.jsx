@@ -34,7 +34,7 @@ const AdminPage = () => {
   const [expandedOrder, setExpandedOrder] = useState(null);
   const [notes, setNotes]             = useState({});
 
-  const [newOrder, setNewOrder] = useState({ customer: "", business: "", poster_type: "Fast Edit (₹49)", details: "" });
+  const [newOrder, setNewOrder] = useState({ customer: "", business: "", poster_type: "Fast Edit (₹99)", details: "" });
   const [newSub, setNewSub]     = useState({ customer: "", business: "", phone: "", plan: "Starter - Special Discount (₹399)", renew_days: 30 });
   const [newPayment, setNewPayment] = useState({ amount: "", note: "" });
 
@@ -65,7 +65,7 @@ const AdminPage = () => {
       if (MAKE_WEBHOOK_URL) {
         fetch(MAKE_WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...orderData, created_at: new Date().toISOString() }) }).catch(() => {});
       }
-      setNewOrder({ customer: "", business: "", poster_type: "Fast Edit (₹49)", details: "" });
+      setNewOrder({ customer: "", business: "", poster_type: "Fast Edit (₹99)", details: "" });
       setCreating(false);
       fetchOrders();
     }
@@ -343,7 +343,7 @@ const AdminPage = () => {
                       <input required className="adm-inp" placeholder="e.g. Iron Fitness" value={newOrder.business} onChange={e => setNewOrder({ ...newOrder, business: e.target.value })} /></div>
                     <div><label style={{ fontSize: 11, color: "#9895B0", display: "block", marginBottom: 5, textTransform: "uppercase", letterSpacing: "1px" }}>Service</label>
                       <select className="adm-inp" value={newOrder.poster_type} onChange={e => setNewOrder({ ...newOrder, poster_type: e.target.value })}>
-                        <option>Fast Edit (₹49)</option><option>Custom Design (₹149)</option><option>Starter Plan (₹499)</option><option>Growth Plan (₹999)</option><option>Business Plan (₹1799)</option>
+                        <option>Fast Edit (₹99)</option><option>Custom Design (₹149)</option><option>Starter Plan (₹499)</option><option>Growth Plan (₹999)</option><option>Business Plan (₹1799)</option>
                       </select></div>
                     <div><label style={{ fontSize: 11, color: "#9895B0", display: "block", marginBottom: 5, textTransform: "uppercase", letterSpacing: "1px" }}>Details</label>
                       <input className="adm-inp" placeholder="Any notes..." value={newOrder.details} onChange={e => setNewOrder({ ...newOrder, details: e.target.value })} /></div>

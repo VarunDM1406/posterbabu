@@ -75,7 +75,7 @@ const ServicesPage = () => {
                 </div>
                 {activeId === cat.id && (
                   <div style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid #2E2B45", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-                    <span style={{ fontSize: 13, color: "#9895B0" }}>{t("svcStartingFrom")} <strong style={{ color: "#D05B37" }}>₹49</strong></span>
+                    <span style={{ fontSize: 13, color: "#9895B0" }}>{t("svcStartingFrom")} <strong style={{ color: "#D05B37" }}>₹99</strong></span>
                     <button className="fire-btn" style={{ padding: "10px 20px", fontSize: 13 }} onClick={(e) => { e.stopPropagation(); openWhatsApp(cat.title); }}>
                       <MessageCircle size={15} /> {t("svcOrderThis")}
                     </button>

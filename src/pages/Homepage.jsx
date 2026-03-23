@@ -108,7 +108,7 @@ const Homepage = ({ navigate }) => {
             </div>
             <div style={{ position: "absolute", top: -16, right: -16, background: "#D05B37", borderRadius: 16, padding: "12px 18px", boxShadow: "0 12px 32px rgba(208,91,55,0.4)" }}>
               <p style={{ fontSize: 11, fontWeight: 700, color: "rgba(245,240,232,0.7)", textTransform: "uppercase", letterSpacing: 1 }}>From</p>
-              <p style={{ fontSize: 26, fontWeight: 900, color: "#F5F0E8", fontFamily: "'Playfair Display',serif" }}>₹49</p>
+              <p style={{ fontSize: 26, fontWeight: 900, color: "#F5F0E8", fontFamily: "'Playfair Display',serif" }}>₹99</p>
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@ const Homepage = ({ navigate }) => {
             {GALLERY.map((img, i) => (
               <div key={i} className="hp-gallery-item">
                 <img src={img} alt="Poster sample" />
-                <div style={{ position: "absolute", top: 10, right: 10, background: "#D05B37", borderRadius: 8, padding: "4px 10px", fontSize: 11, fontWeight: 800, color: "#F5F0E8" }}>🔥 ₹49</div>
+                <div style={{ position: "absolute", top: 10, right: 10, background: "#D05B37", borderRadius: 8, padding: "4px 10px", fontSize: 11, fontWeight: 800, color: "#F5F0E8" }}>🔥 ₹99</div>
               </div>
             ))}
           </div>

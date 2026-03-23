@@ -21,7 +21,7 @@ const PricingPage = ({ navigate }) => {
   const [openFaq, setOpenFaq] = useState(null);
 
   const ENTRY_OFFERS = [
-    { tagline: t("offer1Tagline"), name: t("offer1Name"), oldPrice: 99, newPrice: 49,  features: [t("offer1F1"), t("offer1F2"), t("offer1F3")], button: t("offer1Btn"), highlight: false },
+    { tagline: t("offer1Tagline"), name: t("offer1Name"), oldPrice: 199, newPrice: 99,  features: [t("offer1F1"), t("offer1F2"), t("offer1F3")], button: t("offer1Btn"), highlight: false },
     { tagline: t("offer2Tagline"), name: t("offer2Name"), oldPrice: 299, newPrice: 149, features: [t("offer2F1"), t("offer2F2"), t("offer2F3"), t("offer2F4")], button: t("offer2Btn"), highlight: true },
   ];
 

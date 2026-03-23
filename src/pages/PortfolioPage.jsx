@@ -77,7 +77,7 @@ const PortfolioPage = () => {
           <div className="pp-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
             {filtered.map(item => (
               <div key={item.id} className="pp-grid-item" onClick={() => setPreview(item)}>
-                <div style={{ position: "absolute", top: 18, right: 18, background: "#D05B37", borderRadius: 8, padding: "4px 10px", fontSize: 11, fontWeight: 800, color: "#F5F0E8", zIndex: 2 }}>🔥 ₹49</div>
+                <div style={{ position: "absolute", top: 18, right: 18, background: "#D05B37", borderRadius: 8, padding: "4px 10px", fontSize: 11, fontWeight: 800, color: "#F5F0E8", zIndex: 2 }}>🔥 ₹99</div>
                 <div style={{ aspectRatio: "3/4", borderRadius: 12, overflow: "hidden", marginBottom: 12, background: "#0C0A1E" }}>
                   <img src={item.img} alt={item.title} />
                 </div>
