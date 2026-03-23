@@ -27,7 +27,7 @@ const Homepage = ({ navigate }) => {
   const ENTRY_OFFERS = [
     {
       name: t("offer1Name"),
-      oldPrice: 99, newPrice: 49,
+      oldPrice: 199, newPrice: 99,
       tagline: t("offer1Tagline"),
       features: [t("offer1F1"), t("offer1F2"), t("offer1F3")],
       button: t("offer1Btn"),
