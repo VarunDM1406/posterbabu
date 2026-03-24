@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { MessageCircle, Plus, RefreshCw, CheckCircle, Copy, Trash2, Download, Users, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react";
 import { supabase } from "../supabaseClient";
 
-const ADMIN_PASSWORD = "posterbabu2024";
-const MAKE_WEBHOOK_URL = ""; // orders webhook (currently unused)
-const MAKE_SUB_WEBHOOK_URL = "https://hook.eu1.make.com/mujzjctt5he038xxxto8arrcs6yzjrv5";
+const ADMIN_PASSWORD = "poster";
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/mujzjctt5he038xxxto8arrcs6yzjrv5";
 
 const STATUS_LABELS = ["", "Received", "Designing", "Review Sent", "Delivered"];
 const STATUS_COLORS = ["", "#9895B0", "#D05B37", "#a78bfa", "#22c55e"];
