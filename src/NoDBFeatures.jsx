@@ -92,7 +92,7 @@ const FESTIVALS_2026 = [
   { name: "Eid-ul-Adha",      date: new Date("2026-05-27"), emoji: "🐑" },
   { name: "Independence Day", date: new Date("2026-08-15"), emoji: "🏛️" },
   { name: "Ganesh Chaturthi", date: new Date("2026-09-14"), emoji: "🐘" },
-  { name: "Navratri",         date: new Date("2026-10-12"), emoji: "🪔" },
+  
   { name: "Dussehra",         date: new Date("2026-10-20"), emoji: "🏹" },
   { name: "Diwali",           date: new Date("2026-11-08"), emoji: "✨" },
   { name: "Christmas",        date: new Date("2026-12-25"), emoji: "🎄" },
