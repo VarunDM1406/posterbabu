@@ -4,7 +4,7 @@ import { supabase } from "../supabaseClient";
 
 const ADMIN_PASSWORD = "posterbabu2024";
 const MAKE_WEBHOOK_URL = ""; // orders webhook (currently unused)
-const MAKE_SUB_WEBHOOK_URL = "https://hook.eu1.make.com/6ykkduk4dj43084hkxo96uh6scp6rcrp";
+const MAKE_SUB_WEBHOOK_URL = "https://hook.eu1.make.com/mujzjctt5he038xxxto8arrcs6yzjrv5";
 
 const STATUS_LABELS = ["", "Received", "Designing", "Review Sent", "Delivered"];
 const STATUS_COLORS = ["", "#9895B0", "#D05B37", "#a78bfa", "#22c55e"];
