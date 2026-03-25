@@ -2,47 +2,7 @@
 // Place this file in the same folder as your other pages (e.g. HomPage.jsx, ServicesPage.jsx)
 // URL will be: posterbabu.shop/?page=yt-clients
 
-import React, { useRef, useState, useCallback } from "react";
-
-const BeforeAfterSlider = ({ beforeSrc, afterSrc }) => {
-  const [pos, setPos] = useState(50);
-  const containerRef = useRef(null);
-  const dragging = useRef(false);
-
-  const updatePos = useCallback((clientX) => {
-    const rect = containerRef.current.getBoundingClientRect();
-    const pct = Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100));
-    setPos(pct);
-  }, []);
-
-  const onMouseDown = (e) => { dragging.current = true; updatePos(e.clientX); };
-  const onMouseMove = (e) => { if (dragging.current) updatePos(e.clientX); };
-  const onMouseUp   = ()  => { dragging.current = false; };
-  const onTouchMove = (e) => updatePos(e.touches[0].clientX);
-
-  return (
-    <div
-      ref={containerRef}
-      className="yt-ba-slider-container"
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
-      onTouchStart={(e) => updatePos(e.touches[0].clientX)}
-      onTouchMove={onTouchMove}
-    >
-      <img src={beforeSrc} alt="Before" className="yt-ba-img" />
-      <img
-        src={afterSrc} alt="After" className="yt-ba-img yt-ba-after"
-        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
-      />
-      <div className="yt-ba-divider" style={{ left: `${pos}%` }} />
-      <div className="yt-ba-handle"  style={{ left: `${pos}%` }}>⇔</div>
-      <span className="yt-ba-pill-before">Before</span>
-      <span className="yt-ba-pill-after">After ✨</span>
-    </div>
-  );
-};
+import React from "react";
 
 const YTClientsPage = () => {
   return (
@@ -142,57 +102,56 @@ const YTClientsPage = () => {
           border-radius: 2px; margin-bottom: 24px;
         }
 
-        /* BEFORE / AFTER SLIDER */
+        /* BEFORE / AFTER SIDE BY SIDE */
         .yt-ba-section { padding: 64px max(24px,5vw); background: #0c0c0f; }
-        .yt-ba-wrap {
-          max-width: 860px; margin: 0 auto; text-align: center;
-        }
+        .yt-ba-wrap { max-width: 1100px; margin: 0 auto; text-align: center; }
         .yt-ba-label {
           font-size: 11px; font-weight: 800; letter-spacing: 2px;
           text-transform: uppercase; color: #f97316; margin-bottom: 12px;
         }
         .yt-ba-title { font-size: clamp(22px,3vw,32px); font-weight: 800; margin-bottom: 8px; }
         .yt-ba-sub { font-size: 14px; color: #71717a; margin-bottom: 36px; }
-        .yt-ba-slider-container {
-          position: relative; border-radius: 20px; overflow: hidden;
-          border: 1px solid #27272a; cursor: col-resize; user-select: none;
-          aspect-ratio: 16/9;
+        .yt-ba-grid {
+          display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center;
         }
-        .yt-ba-img {
-          position: absolute; top: 0; left: 0;
-          width: 100%; height: 100%; object-fit: cover;
+        .yt-ba-card {
+          border-radius: 20px; overflow: hidden; border: 1px solid #27272a;
+          background: #18181b; position: relative;
         }
-        .yt-ba-after { clip-path: inset(0 50% 0 0); transition: clip-path 0s; }
-        .yt-ba-divider {
-          position: absolute; top: 0; bottom: 0;
-          left: 50%; width: 3px; background: #f97316;
-          transform: translateX(-50%); pointer-events: none;
+        .yt-ba-card img {
+          width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;
         }
-        .yt-ba-handle {
-          position: absolute; top: 50%; left: 50%;
-          transform: translate(-50%,-50%);
-          width: 44px; height: 44px; border-radius: 50%;
-          background: #f97316; border: 3px solid #fff;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 16px; pointer-events: none;
-          box-shadow: 0 4px 16px rgba(249,115,22,0.4);
-        }
-        .yt-ba-pill-before, .yt-ba-pill-after {
-          position: absolute; bottom: 16px;
+        .yt-ba-pill {
+          position: absolute; bottom: 14px; left: 14px;
           padding: 5px 14px; border-radius: 100px;
           font-size: 11px; font-weight: 800;
           text-transform: uppercase; letter-spacing: 1px;
         }
-        .yt-ba-pill-before { left: 16px; background: rgba(0,0,0,0.6); color: #a1a1aa; border: 1px solid #3f3f46; }
-        .yt-ba-pill-after  { right: 16px; background: #f97316; color: #fff; }
+        .yt-ba-pill.before { background: rgba(0,0,0,0.7); color: #a1a1aa; border: 1px solid #3f3f46; }
+        .yt-ba-pill.after  { background: #f97316; color: #fff; }
+        .yt-ba-card-label {
+          padding: 12px 16px 14px;
+          font-size: 13px; font-weight: 700; color: #52525b; text-align: left;
+        }
+        .yt-ba-card-label.after-label { color: #fb923c; }
+        .yt-ba-arrow-wrap {
+          display: flex; align-items: center; justify-content: center;
+          width: 48px; height: 48px; background: #18181b;
+          border: 2px solid #f97316; border-radius: 50%; flex-shrink: 0;
+          font-size: 20px; color: #f97316;
+        }
         .yt-ba-improvements {
-          display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 24px;
+          display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px;
         }
         .yt-ba-chip {
           display: inline-flex; align-items: center; gap: 6px;
           background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25);
           color: #fb923c; padding: 6px 14px; border-radius: 100px;
           font-size: 12px; font-weight: 700;
+        }
+        @media(max-width:600px) {
+          .yt-ba-grid { grid-template-columns: 1fr; }
+          .yt-ba-arrow-wrap { transform: rotate(90deg); margin: 0 auto; }
         }
 
         /* PROBLEM */
@@ -384,16 +343,25 @@ const YTClientsPage = () => {
           </div>
         </header>
 
-        {/* BEFORE / AFTER SLIDER */}
+        {/* BEFORE / AFTER SIDE BY SIDE */}
         <section className="yt-ba-section">
           <div className="yt-ba-wrap">
             <div className="yt-ba-label">🎬 Thumbnail Redesign</div>
             <h2 className="yt-ba-title">See the Difference We Make</h2>
-            <p className="yt-ba-sub">Drag the slider to compare before and after</p>
-            <BeforeAfterSlider
-              beforeSrc="/templates/before_cbse.png"
-              afterSrc="/templates/after_cbse.png"
-            />
+            <p className="yt-ba-sub">Real client work — before and after PosterBabu</p>
+            <div className="yt-ba-grid">
+              <div className="yt-ba-card">
+                <img src="/templates/before_cbse.png" alt="Before thumbnail" />
+                <span className="yt-ba-pill before">Before</span>
+                <div className="yt-ba-card-label">❌ Low CTR — bland, no hook</div>
+              </div>
+              <div className="yt-ba-arrow-wrap">→</div>
+              <div className="yt-ba-card">
+                <img src="/templates/after_cbse.png" alt="After thumbnail" />
+                <span className="yt-ba-pill after">After ✨</span>
+                <div className="yt-ba-card-label after-label">✅ High CTR — bold, eye-catching</div>
+              </div>
+            </div>
             <div className="yt-ba-improvements">
               {["✔ Clear & bold messaging", "✔ Strong visual hierarchy", "✔ High contrast readability", "✔ Designed to attract attention"].map(i => (
                 <span key={i} className="yt-ba-chip">{i}</span>
