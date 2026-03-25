@@ -10,6 +10,7 @@ import ContactPage   from "./pages/ContactPage";
 import TrackOrderPage  from "./pages/TrackOrderPage";
 import AdminPage      from "./pages/AdminPage";
 import DashboardPage  from "./pages/DashboardPage";
+import YTClientsPage from "./pages/YTClientsPage";
 
 import { TrustBar } from "./NoDBFeatures";
 import { LanguageProvider, LangToggle, useLanguage } from "./LanguageContext";
@@ -46,6 +47,7 @@ function AppInner() {
       case "track":     return <TrackOrderPage />;
       case "admin":     return <AdminPage />;
       case "dashboard": return <DashboardPage />;
+      case "yt-clients": return <YTClientsPage />;
       default:          return <Homepage navigate={navigate} />;
     }
   };
