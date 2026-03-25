@@ -438,7 +438,7 @@ const YTClientsPage = () => {
                   <div className="yt-price-sub">Perfect for occasional videos</div>
                   <div className="yt-price-amt">₹700 <span className="yt-price-unit">/thumbnail</span></div>
                   <ul className="yt-price-features">
-                    {["High-quality CTR design", "Tailored to your content", "24–48 hr delivery", "1–2 revisions included"].map(f => (
+                    {["High-quality CTR design", "Tailored to your content", "02-04 hr delivery", "1 revisions included"].map(f => (
                       <li key={f}><span className="yt-check">✓</span> {f}</li>
                     ))}
                   </ul>
@@ -499,7 +499,7 @@ const YTClientsPage = () => {
                 { n: "01", t: "Understand", d: "We analyse your topic, title, and vision." },
                 { n: "02", t: "Strategy", d: "We develop a strong hook to bait clicks." },
                 { n: "03", t: "Design", d: "Bold, mobile-first visuals for max CTR." },
-                { n: "04", t: "Deliver", d: "Refine based on feedback & ship in 24–48 hrs." },
+                { n: "04", t: "Deliver", d: "Refine based on feedback & ship in 02-04 hrs." },
               ].map(s => (
                 <div key={s.n}>
                   <div className="yt-process-num">{s.n}</div>
@@ -552,7 +552,7 @@ const YTClientsPage = () => {
               {[
                 { l: "💰 Payment", v: "50% advance before starting · 50% after final delivery · Monthly plans paid 100% in advance." },
                 { l: "🔁 Revisions", v: "1–2 revisions included. Additional revisions are chargeable." },
-                { l: "⏱ Delivery", v: "Standard: 24–48 hours · Urgent delivery available at extra cost." },
+                { l: "⏱ Delivery", v: "Standard: 02-04 hours · Urgent delivery available at extra cost." },
                 { l: "🚫 Refund Policy", v: "No refunds once work has started. Advance is non-refundable after initiation." },
                 { l: "📅 Monthly Plan", v: "Fixed number of thumbnails per month. Unused designs do not carry forward." },
                 { l: "📢 Usage Rights", v: "Full usage rights after final payment. PosterBabu may showcase work in portfolio." },
@@ -572,7 +572,7 @@ const YTClientsPage = () => {
         {/* FOOTER */}
         <footer className="yt-footer">
           <div className="yt-brand" style={{ fontSize: 18 }}>POSTER<span style={{ color: "#f97316" }}>BABU</span></div>
-          <p>© 2024 PosterBabu. We don't just design thumbnails — we design clicks.</p>
+          <p>© 2026 PosterBabu. We don't just design thumbnails — we design clicks.</p>
         </footer>
 
       </div>
