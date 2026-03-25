@@ -357,7 +357,7 @@ const YTClientsPage = () => {
               </div>
               <div className="yt-ba-arrow-wrap">→</div>
               <div className="yt-ba-card">
-                <img src="/templates/after_cbse.png" alt="After thumbnail" />
+                <img src="/templates/after_cbse.jpg" alt="After thumbnail" />
                 <span className="yt-ba-pill after">After ✨</span>
                 <div className="yt-ba-card-label after-label">✅ High CTR — bold, eye-catching</div>
               </div>
