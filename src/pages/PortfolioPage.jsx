@@ -8,8 +8,8 @@ const PORTFOLIO_ITEMS = [
   { id: 2,  cat: "Salon",    title: "Bridal Makeup Pack",         img: "/templates/salon-makeup.png" },
   { id: 3,  cat: "Gym",      title: "Iron Fitness 50% Off",       img: "/templates/gym-offer.png" },
   { id: 4,  cat: "Gym",      title: "New Year Membership Offer",  img: "/templates/gym-membership.png" },
-  { id: 5,  cat: "Cafe",     title: "Catering Service",           img: "/templates/catering-service.png" },
-  { id: 6,  cat: "Cafe",     title: "Sweets Menu",                img: "/templates/sweets-menu.png" },
+  { id: 5,  cat: "Bakery",     title: "Catering Service",           img: "/templates/catering-service.png" },
+  { id: 6,  cat: "Bakery",     title: "Sweets Menu",                img: "/templates/sweets-menu.png" },
   { id: 7,  cat: "Retail",   title: "Kirana Big Sale",            img: "/templates/kirana-sale.png" },
   { id: 8,  cat: "Retail",   title: "Electronics Dhamaka",        img: "/templates/retail-sale.png" },
   { id: 9,  cat: "Coaching", title: "Maths Admission Open",       img: "/templates/coaching-admission.png" },
@@ -19,9 +19,14 @@ const PORTFOLIO_ITEMS = [
   { id: 13, cat: "Retail",   title: "Shyam Manufacturers Poster", img: "/templates/shyam_manufacturers.png" },
   { id: 14, cat: "Coaching", title: "Expert Classes Banner",      img: "/templates/expert_classes.jpg" },
   { id: 15, cat: "Festival", title: "Navratari Special",          img: "/templates/navratari.png" },
+  { id: 15, cat: "Bakery", title: "Shakes Special",          img: "/templates/bakery_shakes.jpg" },
+  { id: 15, cat: "Salon", title: "The Engagement Design",          img: "/templates/beauty.png" },
+  { id: 15, cat: "Bakery", title: "Strawberry Cake",          img: "/templates/cake_nikks.png" },
+  { id: 15, cat: "Bakery", title: "Sweet Cravings",          img: "/templates/CRAVINGS.png" },
+  { id: 15, cat: "Bakery", title: "Wedding Cakes",          img: "/templates/wedding_cake.png" }
 ];
 
-const CATEGORIES = ["All", "Salon", "Gym", "Cafe", "Retail", "Coaching", "Festival"];
+const CATEGORIES = ["All", "Salon", "Gym", "Bakery", "Retail", "Coaching", "Festival"];
 
 const PortfolioPage = () => {
   const { t } = useLanguage();
