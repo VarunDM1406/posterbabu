@@ -18,9 +18,10 @@ import { LanguageProvider, LangToggle, useLanguage } from "./LanguageContext";
 // Read URL params to handle /track?id=XX and /admin routes
 const getInitialPage = () => {
   const params = new URLSearchParams(window.location.search);
-  if (params.get("page") === "track")     return "track";
-  if (params.get("page") === "admin")     return "admin";
-  if (params.get("page") === "dashboard") return "dashboard";
+  if (params.get("page") === "track")      return "track";
+  if (params.get("page") === "admin")      return "admin";
+  if (params.get("page") === "dashboard")  return "dashboard";
+  if (params.get("page") === "yt-clients") return "yt-clients"; // ← ADD THIS
   return "home";
 };
 
