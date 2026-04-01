@@ -138,7 +138,7 @@ const PricingPage = ({ navigate }) => {
       posts: "24 posts/month",
       freq: "5–6 per week",
       features: [
-        "24 posts/designs per month (5–6/week)",
+        "24 posts/designs per month (6/week)",
         "Fully custom designs",
         "Campaign & offer creatives",
         "Same-day delivery",

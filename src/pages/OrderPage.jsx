@@ -54,12 +54,11 @@ const OrderPage = () => {
               <div className="op-select-wrap">
                 <select className="op-input" value={formData.type} onChange={e => setFormData({ ...formData, type: e.target.value })} style={{ paddingRight: 40 }}>
                   <option>Fast Edit (₹99)</option>
-                  <option>Custom Design (₹149)</option>
-                  <option>Starter - Special Discount (₹399)</option>
-                  <option>Growth - Special Discount (₹799)</option>
-                  <option>Starter (₹499)</option>
-                  <option>Growth (₹999)</option>
-                  <option>Pro (₹1999)</option>
+                  <option>Custom Design (₹199)</option>
+                  <option>Content Starter Pack - 5 designs - (₹499)</option>
+                  <option>Starter - 8 designs (2/week) - (₹999)</option>
+                  <option>Growth (Best Value🔥) - 16 designs (4/week) - (₹2499)</option>
+                  <option>Pro - 24 designs (6/week) - (₹3499)</option>
                 </select>
                 <ChevronDown size={16} />
               </div>

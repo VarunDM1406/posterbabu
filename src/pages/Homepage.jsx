@@ -35,7 +35,7 @@ const Homepage = ({ navigate }) => {
     },
     {
       name: t("offer2Name"),
-      oldPrice: 299, newPrice: 149,
+      oldPrice: 299, newPrice: 199,
       tagline: t("offer2Tagline"),
       features: [t("offer2F1"), t("offer2F2"), t("offer2F3"), t("offer2F4")],
       button: t("offer2Btn"),
