@@ -402,7 +402,7 @@ export function WhatsAppTestimonials() {
             display: "inline-block",
             background: "rgba(208,91,55,0.15)", border: "1px solid rgba(208,91,55,0.3)",
             color: "#E87A57", padding: "5px 12px", borderRadius: 100,
-            fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase",
+            fontSize: 16, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase",
           }}>Real reviews</span>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(28px,4vw,40px)", fontWeight: 900, color: "#F5F0E8", marginTop: 16 }}>
             What clients <span style={{ color: "#D05B37" }}>actually said</span>
